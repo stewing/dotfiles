@@ -27,6 +27,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/ctags.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'vim-scripts/a.vim'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 "
 " Vundle setup -- BEGIN
@@ -70,3 +75,5 @@ let g:airline_theme='wombat'
 
 " CTags
 set tags+=src/TAGS
+
+colorscheme molokai
