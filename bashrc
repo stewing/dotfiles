@@ -22,6 +22,7 @@ alias date='date +"%A %B %e %r"'
 alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
+alias grep="grep --color"
 
 # settings
 EDITOR=vim
