@@ -14,6 +14,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+set laststatus=2
 
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/swap/
@@ -35,6 +36,10 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+" Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
+Plugin 'mbbill/undotree'
 call vundle#end()
 "
 " Vundle setup -- BEGIN
@@ -75,6 +80,15 @@ set wildignore=*.o,*~,*.pyc
 " Airline Config
 let g:airline_powerline_fonts=1
 let g:airline_theme='wombat'
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+""  plugins
+let g:airline#extensions#tagbar#enabled=1
+let g:airline#extensions#tagbar#flags='s'
+let g:airline#extensions#syntastic#enabled=1
+
+" tagbar setup
+let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 
 " CTags
 set tags+=src/TAGS

@@ -24,6 +24,18 @@ alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0]
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
 
+# cdexec (PROMPT_COMMAND)
+function cdexec {
+    if [ -x .cdexec ] ; then 
+        file=`realpath .cdexec`
+        if [ `stat -c %A $file | cut -c6` == "-" ] && \
+            [ `stat -c %A $file | cut -c9` == "-" ] && \
+            [ `stat -c %U $file` == $USER ]  ; then
+            . .cdexec
+        fi
+    fi
+}
+
 # settings
 EDITOR=vim
 GIT_EDITOR=$EDITOR
@@ -32,7 +44,18 @@ PAGER="less"
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
 
-export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR
+# set up interactive vs. non-interactive stuff...
+case $- in
+    *i*)    # interactive shell
+    if [ `uname -s` == "Linux" ] ; then 
+        PROMPT_COMMAND=cdexec
+    fi
+    ;;
+    *)      # non-interactive shell
+    ;;
+esac
+
+export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND
 
 # functions
 
