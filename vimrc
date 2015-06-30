@@ -84,6 +84,7 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='wombat'
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
+let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v'
 ""  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
