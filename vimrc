@@ -32,12 +32,13 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
 call vundle#end()
@@ -50,6 +51,7 @@ set smartcase
 set showmatch
 set incsearch
 set showmatch
+set hlsearch
 set mat=2
 
 " filetype plugin/syntax
@@ -85,7 +87,7 @@ let g:airline_section_c = '%t'
 ""  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
-let g:airline#extensions#syntastic#enabled=1
+" let g:airline#extensions#syntastic#enabled=1
 
 " tagbar setup
 let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
@@ -93,4 +95,4 @@ let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 " CTags
 set tags+=src/TAGS
 
-colorscheme molokai
+colorscheme desert256v2
