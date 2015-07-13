@@ -98,4 +98,8 @@ let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 " CTags
 set tags+=src/TAGS
 
-colorscheme desert256v2
+if has('gui_running')
+    colorscheme desert
+else
+    colorscheme desert256v2
+endif
