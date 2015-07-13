@@ -14,6 +14,16 @@ alias hex='printf "0x%08x\n"'
 alias dec='printf "%d\n"'
 alias bin="perl -e 'printf(\"%b\n\", shift());'"
 
+function rand_no {
+    local ceil=10
+    if [ ! -z $1 ] ; then
+        ceil=$1
+    fi
+    local myrand=$(($RANDOM % $ceil))
+    printf "%d\n" $myrand
+    return $myrand
+}
+
 # size
 alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (\$inp >= 1073741824) {\$s = 'GB', \$v = 1073741824;} elsif (\$inp >= 1048576) { \$s = 'MB';\$v = 1048576 } elsif (\$inp >= 1024) { \$s = 'KB'; \$v = 1024} printf(\"%0.2f%s\\n\", \$inp/\$v, \$s);'"
 
@@ -48,7 +58,7 @@ FIGNORE=".o:~"
 case $- in
     *i*)    # interactive shell
     if [ `uname -s` == "Linux" ] ; then 
-        PROMPT_COMMAND=cdexec
+        PROMPT_COMMAND=
     fi
     ;;
     *)      # non-interactive shell
