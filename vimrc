@@ -78,7 +78,7 @@ set tabstop=4
 
 " wildmode
 set wildmenu
-set wildmode=list,longest
+set wildmode=list,longest,full
 set wildignore=*.o,*~,*.pyc
 
 " Airline Config
