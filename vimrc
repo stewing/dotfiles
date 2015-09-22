@@ -21,6 +21,8 @@ set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/swap/
 
+set t_ut=
+
 "
 " Vundle setup -- BEGIN
 "
@@ -76,6 +78,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" language-specific settings
+set cinoptions+=g0
+
 " wildmode
 set wildmenu
 set wildmode=list,longest,full
@@ -101,5 +106,6 @@ set tags+=src/TAGS
 if has('gui_running')
     colorscheme desert
 else
-    colorscheme desert256v2
+    set background=dark
+    colorscheme desertEx
 endif
