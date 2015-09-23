@@ -16,7 +16,7 @@ set t_vb=
 set tm=500
 set laststatus=2
 
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
 
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/swap/
