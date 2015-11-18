@@ -39,6 +39,11 @@ alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
 
+function grep1 {
+    
+    alias grep1="awk 'NR==1 || /$1/'"
+}
+
 # cdexec (PROMPT_COMMAND)
 function cdexec {
     if [ -x .cdexec ] ; then 
@@ -58,6 +63,7 @@ PS1="\h % "
 PAGER="less"
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
+MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 
 # set up interactive vs. non-interactive stuff...
 case $- in
@@ -70,7 +76,7 @@ case $- in
     ;;
 esac
 
-export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND
+export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # functions
 

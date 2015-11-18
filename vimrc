@@ -16,7 +16,10 @@ set t_vb=
 set tm=500
 set laststatus=2
 
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
+if has("unix")
+    set guifont=Anonymous\ Pro\ for\ Powerline\ 11  
+endif
+
 
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/swap/
@@ -42,6 +45,7 @@ Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
@@ -57,7 +61,7 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
-nnoremap <silent> <CR> :let @/ = ""<CR>
+nnoremap  <CR> :noh<CR>
 
 
 " filetype plugin/syntax
@@ -79,6 +83,7 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 
 " language-specific settings
 set cinoptions+=g0
@@ -109,5 +114,5 @@ if has('gui_running')
     colorscheme desert
 else
     set background=dark
-    colorscheme desertEx
+    colorscheme desert256v2
 endif
