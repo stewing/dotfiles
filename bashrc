@@ -15,6 +15,13 @@ alias hex='printf "0x%08x\n"'
 alias dec='printf "%d\n"'
 alias bin="perl -e 'printf(\"%b\n\", shift());'"
 
+# strings, etc
+
+function strlen {
+    str=$1
+    echo ${#str}
+}
+
 function rand_no {
     local ceil=10
     if [ ! -z $1 ] ; then
