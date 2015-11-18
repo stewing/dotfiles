@@ -57,7 +57,7 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
-nnoremap  <CR> :let @/ = ""<CR>
+nnoremap <silent> <CR> :let @/ = ""<CR>
 
 
 " filetype plugin/syntax

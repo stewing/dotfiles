@@ -34,6 +34,10 @@ alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0]
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
+alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+
+# other utilities
+alias noblanks="sed '/^\s*$/d'"
 
 # cdexec (PROMPT_COMMAND)
 function cdexec {
@@ -73,3 +77,9 @@ export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND
 function epochtime {
     \date --date @$1 --utc
 }
+
+# completion
+COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
+if [ -x $COMPLETION_FILE ] ; then
+    . $COMPLETION_FILE
+fi
