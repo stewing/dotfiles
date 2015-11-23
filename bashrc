@@ -65,6 +65,11 @@ HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
 MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 
+# P4
+P4CONFIG=Perforce
+P4EDITOR=vim
+P4DIFF=vimdiff
+
 # set up interactive vs. non-interactive stuff...
 case $- in
     *i*)    # interactive shell
