@@ -16,7 +16,15 @@ set t_vb=
 set tm=500
 set laststatus=2
 
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        " mac
+    else
+        " linux, bsd
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+    endif
+endif
 
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/swap/
@@ -42,6 +50,7 @@ Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-startify'
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
@@ -57,6 +66,7 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
+nnoremap <CR> :let @/ = ""<CR>
 
 " filetype plugin/syntax
 filetype plugin on
