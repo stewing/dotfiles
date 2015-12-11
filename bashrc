@@ -6,6 +6,7 @@ shopt -s checkwinsize
 shopt -s execfail
 shopt -s hostcomplete
 
+
 # path utilities
 alias realpath="perl -MCwd -e 'print Cwd::realpath(shift()).\"\\n\";'"
 
@@ -13,6 +14,13 @@ alias realpath="perl -MCwd -e 'print Cwd::realpath(shift()).\"\\n\";'"
 alias hex='printf "0x%08x\n"'
 alias dec='printf "%d\n"'
 alias bin="perl -e 'printf(\"%b\n\", shift());'"
+
+# strings, etc
+
+function strlen {
+    str=$1
+    echo ${#str}
+}
 
 function rand_no {
     local ceil=10
@@ -33,6 +41,15 @@ alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0]
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
+alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+
+# other utilities
+alias noblanks="sed '/^\s*$/d'"
+
+function grep1 {
+    
+    alias grep1="awk 'NR==1 || /$1/'"
+}
 
 # cdexec (PROMPT_COMMAND)
 function cdexec {
@@ -53,6 +70,12 @@ PS1="\h % "
 PAGER="less"
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
+MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
+
+# P4
+P4CONFIG=Perforce
+P4EDITOR=vim
+P4DIFF=vimdiff
 
 # set up interactive vs. non-interactive stuff...
 case $- in
@@ -65,10 +88,16 @@ case $- in
     ;;
 esac
 
-export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND
+export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # functions
 
 function epochtime {
     \date --date @$1 --utc
 }
+
+# completion
+COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
+if [ -x $COMPLETION_FILE ] ; then
+    . $COMPLETION_FILE
+fi

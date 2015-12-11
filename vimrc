@@ -50,7 +50,11 @@ Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
+<<<<<<< HEAD
 Plugin 'mhinz/vim-startify'
+=======
+Plugin 'Valloric/YouCompleteMe'
+>>>>>>> 429b6effcd27edec32ffa02eb65726ac5cf44d3d
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
@@ -66,7 +70,12 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
+<<<<<<< HEAD
 nnoremap <CR> :let @/ = ""<CR>
+=======
+nnoremap  <CR> :noh<CR>
+
+>>>>>>> 429b6effcd27edec32ffa02eb65726ac5cf44d3d
 
 " filetype plugin/syntax
 filetype plugin on
@@ -87,6 +96,7 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 
 " language-specific settings
 set cinoptions+=g0
@@ -117,5 +127,5 @@ if has('gui_running')
     colorscheme desert
 else
     set background=dark
-    colorscheme desertEx
+    colorscheme desert256v2
 endif
