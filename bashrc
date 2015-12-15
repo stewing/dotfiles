@@ -47,8 +47,11 @@ alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'
 alias noblanks="sed '/^\s*$/d'"
 
 function grep1 {
-    
     alias grep1="awk 'NR==1 || /$1/'"
+}
+
+function colors_dark {
+    LS_COLORS="di=94:fi=0:ln=91:pi=4;35:so=5;35:bd=4;34:cd=4;31:or=4;32:mi=4;95:ex=92"
 }
 
 # cdexec (PROMPT_COMMAND)

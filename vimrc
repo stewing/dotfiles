@@ -50,11 +50,8 @@ Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
-<<<<<<< HEAD
 Plugin 'mhinz/vim-startify'
-=======
 Plugin 'Valloric/YouCompleteMe'
->>>>>>> 429b6effcd27edec32ffa02eb65726ac5cf44d3d
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
@@ -70,12 +67,7 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
-<<<<<<< HEAD
-nnoremap <CR> :let @/ = ""<CR>
-=======
 nnoremap  <CR> :noh<CR>
-
->>>>>>> 429b6effcd27edec32ffa02eb65726ac5cf44d3d
 
 " filetype plugin/syntax
 filetype plugin on
