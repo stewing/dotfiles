@@ -104,3 +104,9 @@ COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
 if [ -x $COMPLETION_FILE ] ; then
     . $COMPLETION_FILE
 fi
+
+# git prompt integration
+#GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
+#if [ -x $GIT_PROMPT_INTEGRATION ] ; then
+#    . $GIT_PROMPT_INTEGRATION
+#fi

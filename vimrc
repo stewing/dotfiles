@@ -52,6 +52,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
@@ -119,5 +120,5 @@ if has('gui_running')
     colorscheme desert
 else
     set background=dark
-    colorscheme desert256v2
+    colorscheme desertEx
 endif
