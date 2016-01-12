@@ -51,7 +51,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
-#Plugin 'Valloric/YouCompleteMe'
+"#Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
