@@ -20,6 +20,7 @@ if has("unix")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
         " mac
+        set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
     else
         " linux, bsd
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
@@ -51,7 +52,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
-#Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
 " Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
