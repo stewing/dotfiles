@@ -6,7 +6,6 @@ shopt -s checkwinsize
 shopt -s execfail
 shopt -s hostcomplete
 
-
 # path utilities
 alias realpath="perl -MCwd -e 'print Cwd::realpath(shift()).\"\\n\";'"
 
@@ -45,6 +44,7 @@ alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'
 
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
+alias agp='ag --pager "less -R"'
 
 function grep1 {
     alias grep1="awk 'NR==1 || /$1/'"
@@ -79,6 +79,7 @@ MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 P4CONFIG=Perforce
 P4EDITOR=vim
 P4DIFF=vimdiff
+alias openlist="p4 opened ...| ack '.*(src.*)#' --output='\$1'"
 
 # set up interactive vs. non-interactive stuff...
 case $- in
@@ -104,6 +105,7 @@ COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
 if [ -x $COMPLETION_FILE ] ; then
     . $COMPLETION_FILE
 fi
+
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
