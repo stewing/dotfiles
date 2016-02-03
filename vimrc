@@ -10,11 +10,16 @@ set autoread
 set ruler
 set lazyredraw
 set hid
+set tm=500
+set laststatus=2
+set showcmd
+set showmode
+
+" disable bells
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
-set laststatus=2
+autocmd! GUIEnter * set vb t_vb=
 
 if has("unix")
     let s:uname = system("uname")
@@ -59,8 +64,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 call vundle#end()
 "
-" Vundle setup -- BEGIN
+" Vundle setup -- END
 "
+
+" scrolling
+set scrolloff=2
+set sidescrolloff=15
+set sidescroll=1
 
 " searching
 set smartcase
@@ -97,8 +107,12 @@ set cinoptions+=g0
 
 " wildmode
 set wildmenu
-set wildmode=list,longest,full
-set wildignore=*.o,*~,*.pyc
+set wildmode=list:longest
+set wildignore=*.o,*.obj,*.class
+set wildignore+=*~
+set wildignore+=*.pyc
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
+
 
 " Airline Config
 let g:airline_powerline_fonts=1
