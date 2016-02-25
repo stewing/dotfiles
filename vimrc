@@ -115,6 +115,9 @@ set wildignore+=*~
 set wildignore+=*.pyc
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
+" BufExplorer Setup
+let g:bufExplorerShowRelativePath=1     " Show relative paths.
+let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 
 " Airline Config
 let g:airline_powerline_fonts=1
