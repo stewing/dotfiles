@@ -40,7 +40,7 @@ alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0]
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
-alias timestamp="awk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
 
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
@@ -73,19 +73,28 @@ PS1="\h % "
 PAGER="less"
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
-MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
+MAKEFLAGS="-j 4"
+if [ -e /proc/cpuinfo ] ; then 
+    MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
+fi
+DIFF="vimdiff -R"
 
 # P4
+alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}' | p4 -x - where | awk '/^\// {print \$3}'"
 P4CONFIG=Perforce
 P4EDITOR=vim
-P4DIFF=vimdiff
-alias openlist="p4 opened ...| ack '.*(src.*)#' --output='\$1'"
+P4DIFF="vimdiff -R"
+
+export P4CONFIG P4EDITOR P4DIFF
 
 # set up interactive vs. non-interactive stuff...
 case $- in
     *i*)    # interactive shell
     if [ `uname -s` == "Linux" ] ; then 
         PROMPT_COMMAND=
+    fi
+    if [ `uname -s` == "Darwin" ] ; then 
+        DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
     fi
     ;;
     *)      # non-interactive shell

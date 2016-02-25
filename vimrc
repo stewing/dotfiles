@@ -57,6 +57,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
+Plugin 'rking/ag.vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
@@ -100,14 +101,15 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set listchars=trail:🚫,precedes:«,extends:»,eol:↩,tab:▸\ 
+"set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\ 
 
 " language-specific settings
 set cinoptions+=g0
 
 " wildmode
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set wildignore=*.o,*.obj,*.class
 set wildignore+=*~
 set wildignore+=*.pyc
@@ -125,6 +127,9 @@ let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
 " let g:airline#extensions#syntastic#enabled=1
 
+" ag.vim setup
+let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
+
 " tagbar setup
 let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 
@@ -132,8 +137,8 @@ let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 set tags+=src/TAGS
 
 if has('gui_running')
-    colorscheme desert
+    colorscheme enzyme
 else
     set background=dark
-    colorscheme desertEx
+    colorscheme enzyme
 endif
