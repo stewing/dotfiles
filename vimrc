@@ -32,8 +32,12 @@ if has("unix")
     endif
 endif
 
-set backupdir=$HOME/.vim/backup/
-set directory=$HOME/.vim/swap/
+silent !mkdir /tmp/sewing > /dev/null 2>&1
+silent !mkdir /tmp/sewing/vim > /dev/null 2>&1
+silent !mkdir /tmp/sewing/vim/swap/ > /dev/null 2>&1
+silent !mkdir /tmp/sewing/vim/backup/ > /dev/null 2>&1
+set directory=/tmp/sewing/vim/swap/
+set backupdir=/tmp/sewing/vim/backup/
 
 set t_ut=
 

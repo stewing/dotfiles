@@ -115,6 +115,8 @@ if [ -x $COMPLETION_FILE ] ; then
     . $COMPLETION_FILE
 fi
 
+PYTHONPATH=/System/Library/Frameworks/Python.framework
+
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
