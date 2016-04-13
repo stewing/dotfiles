@@ -80,7 +80,7 @@ fi
 DIFF="vimdiff -R"
 
 # P4
-alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}' | p4 -x - where | awk '/^\// {print \$3}'"
+alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}'"
 P4CONFIG=Perforce
 P4EDITOR=vim
 P4DIFF="vimdiff -R"
@@ -95,6 +95,7 @@ case $- in
     fi
     if [ `uname -s` == "Darwin" ] ; then 
         DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
+        PATH=$PATH:/opt/pan/bin/
     fi
     ;;
     *)      # non-interactive shell
@@ -117,6 +118,10 @@ fi
 
 PYTHONPATH=/System/Library/Frameworks/Python.framework
 
+
+# pan
+alias mac_uninst_ppk='bash -c "for f in /pan/ppk/* ; do /usr/pan/bin/sudo \$f uninstall; done"' 
+alias mac_inst_ppk='if [ -e /opt/pan/bin/panfs_trace ] ; then echo "Found existing installation, removing..." ; mac_uninst_ppk; fi; echo "Installing current packages."; bash -c "for f in darwin_14_amd64/debug/releng/spool/panfs-{apps,benchmarks,macosx10.10,test,tools}.ppk ; do /usr/pan/bin/sudo \$f install; done"'
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
