@@ -106,7 +106,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set listchars=trail:🚫,precedes:«,extends:»,eol:↩,tab:▸\ 
-"set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\ 
+"set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
 
 " language-specific settings
 set cinoptions+=g0
