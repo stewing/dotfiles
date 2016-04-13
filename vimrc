@@ -62,6 +62,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
 Plugin 'rking/ag.vim'
+Plugin 'wellle/targets.vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
@@ -105,8 +106,9 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set listchars=trail:🚫,precedes:«,extends:»,eol:↩,tab:▸\ 
+set listchars=trail:⛔,precedes:«,extends:»,eol:↩,tab:▸\ 
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\ 
+"
 
 " language-specific settings
 set cinoptions+=g0
@@ -148,4 +150,8 @@ if has('gui_running')
 else
     set background=dark
     colorscheme enzyme
+endif
+
+if &diff
+    colorscheme desert256v2
 endif
