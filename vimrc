@@ -155,8 +155,7 @@ let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 set tags+=src/TAGS
 
 if has('gui_running')
-  " colorscheme grey2
-    colorscheme colorsbox-material
+    colorscheme grey2
 else
     set background=dark
     colorscheme enzyme
