@@ -21,17 +21,6 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-        " mac
-        set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
-    else
-        " linux, bsd
-        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
-    endif
-endif
-
 silent !mkdir /tmp/sewing > /dev/null 2>&1
 silent !mkdir /tmp/sewing/vim > /dev/null 2>&1
 silent !mkdir /tmp/sewing/vim/swap/ > /dev/null 2>&1
@@ -62,15 +51,11 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
 Plugin 'rking/ag.vim'
-<<<<<<< HEAD
 Plugin 'vim-airline/vim-airline-themes'
-=======
 Plugin 'wellle/targets.vim'
->>>>>>> 6da2aa4325dc4d046c48f2232aeb7517acc74b13
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
-" Plugin 'Shougo/unite.vim' !!! doesn't work with vim 702
 Plugin 'mbbill/undotree'
 call vundle#end()
 "
@@ -110,14 +95,8 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-<<<<<<< HEAD
 set listchars=trail:🚫,precedes:«,extends:»,eol:↩,tab:▸\ 
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
-=======
-set listchars=trail:⛔,precedes:«,extends:»,eol:↩,tab:▸\ 
-"set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\ 
-"
->>>>>>> 6da2aa4325dc4d046c48f2232aeb7517acc74b13
 
 " language-specific settings
 set cinoptions+=g0
@@ -148,11 +127,27 @@ let g:airline#extensions#tagbar#flags='s'
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
 
-" tagbar setup
-let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 
 " CTags
 set tags+=src/TAGS
+
+" System-specific setttings
+if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n" " mac
+
+        set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
+        let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+
+    else " linux, bsd
+
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+        " tagbar setup
+        let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
+
+    endif
+endif
+
 
 if has('gui_running')
     colorscheme grey2
