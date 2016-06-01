@@ -5,6 +5,7 @@
 shopt -s checkwinsize
 shopt -s execfail
 shopt -s hostcomplete
+shopt -s extglob
 
 # path utilities
 alias realpath="perl -MCwd -e 'print Cwd::realpath(shift()).\"\\n\";'"

@@ -53,6 +53,7 @@ Plugin 'mhinz/vim-startify'
 Plugin 'rking/ag.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wellle/targets.vim'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-vinegar'
@@ -126,9 +127,11 @@ let g:airline#extensions#tagbar#flags='s'
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
 
+" clang_complete setup
+let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 " CTags
-set tags+=src/TAGS
+set tags+=src/tags,src/TAGS
 
 " System-specific setttings
 if has("unix")
@@ -149,7 +152,7 @@ endif
 
 
 if has('gui_running')
-    colorscheme grey2
+    colorscheme inkpok
 else
     set background=dark
     colorscheme enzyme
