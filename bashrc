@@ -36,7 +36,7 @@ function rand_no {
 alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (\$inp >= 1073741824) {\$s = 'GB', \$v = 1073741824;} elsif (\$inp >= 1048576) { \$s = 'MB';\$v = 1048576 } elsif (\$inp >= 1024) { \$s = 'KB'; \$v = 1024} printf(\"%0.2f%s\\n\", \$inp/\$v, \$s);'"
 
 # time
-alias date='date +"%A %B %e %r"'
+# alias date='date +"%A %B %e %r"'
 alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
@@ -46,6 +46,9 @@ alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
 alias agp='ag --pager "less -R"'
+alias addrs="ip -o a | cut -d ' ' -f2,7"
+alias uc="tr '[:lower:]' '[:upper:]'"
+alias lc="tr '[:upper:]' '[:lower:]'"
 
 function grep1 {
     alias grep1="awk 'NR==1 || /$1/'"
@@ -54,6 +57,8 @@ function grep1 {
 function colors_dark {
     LS_COLORS="di=94:fi=0:ln=91:pi=4;35:so=5;35:bd=4;34:cd=4;31:or=4;32:mi=4;95:ex=92"
 }
+
+
 
 # cdexec (PROMPT_COMMAND)
 function cdexec {
@@ -72,13 +77,19 @@ EDITOR=vim
 GIT_EDITOR=$EDITOR
 PS1="\h % "
 PAGER="less"
-HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 FIGNORE=".o:~"
 MAKEFLAGS="-j 4"
 if [ -e /proc/cpuinfo ] ; then 
     MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 fi
 DIFF="vimdiff -R"
+HISTDIR="$HOME/.history"
+
+# history
+shopt -s histappend
+HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
+HISTTIMEFORMAT=”%Y-%m-%d-%T“
+HISTSIZE=5000
 
 # P4
 alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}'"
@@ -92,18 +103,22 @@ export P4CONFIG P4EDITOR P4DIFF
 case $- in
     *i*)    # interactive shell
     if [ `uname -s` == "Linux" ] ; then 
-        PROMPT_COMMAND=
+        true
     fi
     if [ `uname -s` == "Darwin" ] ; then 
         DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
         PATH=$PATH:/opt/pan/bin/
     fi
+    if [ ! -d "$HISTDIR" ] ; then
+        mkdir "$HISTDIR"
+    fi
+    PROMPT_COMMAND='echo "$(date +"%Y%m%d-%H%M%S") $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
     ;;
     *)      # non-interactive shell
     ;;
 esac
 
-export PAGER HISTIGNORE FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
+export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # functions
 

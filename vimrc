@@ -42,7 +42,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/ctags.vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
@@ -56,6 +56,7 @@ Plugin 'wellle/targets.vim'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
+Plugin 'tpope/vim-vinegar'
 call vundle#end()
 "
 " Vundle setup -- END
