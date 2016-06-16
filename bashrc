@@ -88,7 +88,7 @@ HISTDIR="$HOME/.history"
 # history
 shopt -s histappend
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
-HISTTIMEFORMAT=”%Y-%m-%d-%T“
+HISTTIMEFORMAT="%Y-%m-%d-%T "
 HISTSIZE=5000
 
 # P4
@@ -112,7 +112,11 @@ case $- in
     if [ ! -d "$HISTDIR" ] ; then
         mkdir "$HISTDIR"
     fi
-    PROMPT_COMMAND='echo "$(date +"%Y%m%d-%H%M%S") $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
+    if [ `uname -s` == 'FreeBSD' ] ; then 
+        # PROMPT_COMMAND='echo foo'
+    else
+        PROMPT_COMMAND='echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
+    fi
     ;;
     *)      # non-interactive shell
     ;;
