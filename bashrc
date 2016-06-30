@@ -113,6 +113,7 @@ case $- in
         mkdir "$HISTDIR"
     fi
     if [ `uname -s` == 'FreeBSD' ] ; then 
+        true
         # PROMPT_COMMAND='echo foo'
     else
         PROMPT_COMMAND='echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
@@ -142,6 +143,9 @@ PYTHONPATH=/System/Library/Frameworks/Python.framework
 # pan
 alias mac_uninst_ppk='bash -c "for f in /pan/ppk/* ; do /usr/pan/bin/sudo \$f uninstall; done"' 
 alias mac_inst_ppk='if [ -e /opt/pan/bin/panfs_trace ] ; then echo "Found existing installation, removing..." ; mac_uninst_ppk; fi; echo "Installing current packages."; bash -c "for f in darwin_14_amd64/debug/releng/spool/panfs-{apps,benchmarks,macosx10.10,test,tools}.ppk ; do /usr/pan/bin/sudo \$f install; done"'
+function reboot_pe {
+    ssh scripthost-pa /usr/pan/bin/rpower --reset $1
+}
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh

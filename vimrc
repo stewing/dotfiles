@@ -150,6 +150,8 @@ if has("unix")
         " clang_complete setup
         if !empty(glob("/usr/lib/libclang.so.0"))
             let g:clang_library_path="/usr/lib/libclang.so.0"
+        else
+            let g:clang_complete_loaded=1
         endif
 
     endif
