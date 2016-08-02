@@ -140,9 +140,12 @@ let g:airline#extensions#tagbar#flags='s'
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
 
+<<<<<<< HEAD
 " clang_complete setup
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
+=======
+>>>>>>> ff4a94432307b72445960eda2bd74cd156c6bc05
 " CTags
 set tags+=src/tags,src/TAGS
 
@@ -153,12 +156,22 @@ if has("unix")
 
         set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+        " clang_complete setup
+        let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+
 
     else " linux, bsd
 
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
         " tagbar setup
         let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
+
+        " clang_complete setup
+        if !empty(glob("/usr/lib/libclang.so.0"))
+            let g:clang_library_path="/usr/lib/libclang.so.0"
+        else
+            let g:clang_complete_loaded=1
+        endif
 
     endif
 endif
