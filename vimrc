@@ -42,7 +42,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/ctags.vim'
-" Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
@@ -57,6 +56,7 @@ Plugin 'Rip-Rip/clang_complete'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-vinegar'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 "
 " Vundle setup -- END
@@ -75,6 +75,8 @@ set showmatch
 set hlsearch
 set mat=2
 nnoremap  <CR> :noh<CR>
+"nnoremap W w
+"nnoremap Q q
 
 " filetype plugin/syntax
 filetype plugin on
@@ -109,6 +111,17 @@ set wildignore+=*~
 set wildignore+=*.pyc
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
+" Common Command Mappings
+command WQ wq
+command Wq wq
+command Wa wa
+command WA wa
+command WQa wqa
+command Wqa wqa
+command W w
+command Q q
+
+
 " BufExplorer Setup
 let g:bufExplorerShowRelativePath=1     " Show relative paths.
 let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
@@ -127,9 +140,12 @@ let g:airline#extensions#tagbar#flags='s'
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
 
+<<<<<<< HEAD
 " clang_complete setup
-let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
+=======
+>>>>>>> ff4a94432307b72445960eda2bd74cd156c6bc05
 " CTags
 set tags+=src/tags,src/TAGS
 
@@ -140,6 +156,9 @@ if has("unix")
 
         set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+        " clang_complete setup
+        let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+
 
     else " linux, bsd
 
@@ -147,12 +166,19 @@ if has("unix")
         " tagbar setup
         let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
 
+        " clang_complete setup
+        if !empty(glob("/usr/lib/libclang.so.0"))
+            let g:clang_library_path="/usr/lib/libclang.so.0"
+        else
+            let g:clang_complete_loaded=1
+        endif
+
     endif
 endif
 
 
 if has('gui_running')
-    colorscheme inkpok
+    colorscheme inkpot
 else
     set background=dark
     colorscheme enzyme
