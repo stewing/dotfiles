@@ -271,10 +271,6 @@
                 "0": {
                     "key": "TAB",
                     "label": "TAB"
-                },
-                "1": {
-                    "key": "CAPSLOCK",
-                    "label": "CAPSLK"
                 }
             }
         },
@@ -288,6 +284,10 @@
                 "0": {
                     "key": "Q",
                     "label": "Q"
+                },
+                "1": {
+                    "key": "CONS:BRIGHTNESSDECREMENT",
+                    "label": "SCRN-"
                 }
             }
         },
@@ -301,6 +301,10 @@
                 "0": {
                     "key": "W",
                     "label": "W"
+                },
+                "1": {
+                    "key": "CONS:BRIGHTNESSINCREMENT",
+                    "label": "SCRN+"
                 },
                 "2": {
                     "key": "#:flashMode()",
@@ -318,6 +322,10 @@
                 "0": {
                     "key": "E",
                     "label": "E"
+                },
+                "1": {
+                    "key": "#:ledControl( 3, 15, 0 )",
+                    "label": "LED-"
                 }
             }
         },
@@ -331,6 +339,10 @@
                 "0": {
                     "key": "R",
                     "label": "R"
+                },
+                "1": {
+                    "key": "#:ledControl( 4, 15, 0 )",
+                    "label": "LED+"
                 }
             }
         },
@@ -419,8 +431,8 @@
                     "label": "P"
                 },
                 "1": {
-                    "key": "PAUSE",
-                    "label": "PAUSE"
+                    "key": "UP",
+                    "label": "\u2191"
                 }
             }
         },
@@ -434,10 +446,6 @@
                 "0": {
                     "key": "LBRACE",
                     "label": "["
-                },
-                "1": {
-                    "key": "UP",
-                    "label": "\u2191"
                 }
             }
         },
@@ -570,6 +578,10 @@
                 "0": {
                     "key": "G",
                     "label": "G"
+                },
+                "1": {
+                    "key": "CONS:STOP",
+                    "label": "STOP"
                 }
             }
         },
@@ -585,8 +597,8 @@
                     "label": "H"
                 },
                 "1": {
-                    "key": "P*",
-                    "label": "P*"
+                    "key": "CONS:PAUSEPLAY",
+                    "label": "PL\/PS"
                 }
             }
         },
@@ -602,8 +614,8 @@
                     "label": "J"
                 },
                 "1": {
-                    "key": "P\/",
-                    "label": "P\/"
+                    "key": "CONS:SCANPREVIOUSTRACK",
+                    "label": "PREV"
                 }
             }
         },
@@ -619,8 +631,8 @@
                     "label": "K"
                 },
                 "1": {
-                    "key": "HOME",
-                    "label": "HOME"
+                    "key": "CONS:SCANNEXTTRACK",
+                    "label": "NEXT"
                 }
             }
         },
@@ -636,8 +648,8 @@
                     "label": "L"
                 },
                 "1": {
-                    "key": "PAGEUP",
-                    "label": "PGUP"
+                    "key": "LEFT",
+                    "label": "\u2190"
                 }
             }
         },
@@ -653,8 +665,8 @@
                     "label": ";"
                 },
                 "1": {
-                    "key": "LEFT",
-                    "label": "\u2190"
+                    "key": "DOWN",
+                    "label": "\u2193"
                 }
             }
         },
@@ -737,6 +749,10 @@
                 "0": {
                     "key": "C",
                     "label": "C"
+                },
+                "1": {
+                    "key": "CONS:CALCULATOR",
+                    "label": "CALC"
                 }
             }
         },
@@ -844,10 +860,6 @@
                 "0": {
                     "key": "SLASH",
                     "label": "\/"
-                },
-                "1": {
-                    "key": "DOWN",
-                    "label": "\u2193"
                 }
             }
         },
