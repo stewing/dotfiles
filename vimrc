@@ -140,12 +140,9 @@ let g:airline#extensions#tagbar#flags='s'
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
 
-<<<<<<< HEAD
 " clang_complete setup
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
-=======
->>>>>>> ff4a94432307b72445960eda2bd74cd156c6bc05
 " CTags
 set tags+=src/tags,src/TAGS
 
