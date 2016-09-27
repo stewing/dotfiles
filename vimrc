@@ -42,7 +42,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/ctags.vim'
-" Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
@@ -58,6 +57,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-vinegar'
 Plugin 'morhetz/gruvbox'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 "
 " Vundle setup -- END
@@ -76,6 +76,8 @@ set showmatch
 set hlsearch
 set mat=2
 nnoremap  <CR> :noh<CR>
+"nnoremap W w
+"nnoremap Q q
 
 " filetype plugin/syntax
 filetype plugin on
@@ -110,6 +112,17 @@ set wildignore+=*~
 set wildignore+=*.pyc
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
+" Common Command Mappings
+command WQ wq
+command Wq wq
+command Wa wa
+command WA wa
+command WQa wqa
+command Wqa wqa
+command W w
+command Q q
+
+
 " BufExplorer Setup
 let g:bufExplorerShowRelativePath=1     " Show relative paths.
 let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
@@ -127,6 +140,9 @@ let g:airline#extensions#tagbar#flags='s'
 
 " ag.vim setup
 let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
+
+" clang_complete setup
+let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
 " CTags
 set tags+=src/tags,src/TAGS
@@ -160,7 +176,7 @@ endif
 
 
 if has('gui_running')
-    colorscheme inkpok
+    colorscheme inkpot
 else
     set background=dark
     colorscheme enzyme
