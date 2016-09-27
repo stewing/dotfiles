@@ -27,7 +27,7 @@ silent !mkdir /tmp/sewing/vim/swap/ > /dev/null 2>&1
 silent !mkdir /tmp/sewing/vim/backup/ > /dev/null 2>&1
 set directory=/tmp/sewing/vim/swap/
 set backupdir=/tmp/sewing/vim/backup/
-
+set mouse-=a
 set t_ut=
 
 "
@@ -57,6 +57,7 @@ Plugin 'Rip-Rip/clang_complete'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-vinegar'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
 "
 " Vundle setup -- END
