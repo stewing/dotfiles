@@ -46,7 +46,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
 Plugin 'rking/ag.vim'
@@ -179,7 +179,7 @@ if has('gui_running')
     colorscheme inkpot
 else
     set background=dark
-    colorscheme enzyme
+    colorscheme solarized
 endif
 
 if &diff
