@@ -183,5 +183,6 @@ else
 endif
 
 if &diff
-    colorscheme desert256v2
+    set background=dark
+    colorscheme solarized
 endif

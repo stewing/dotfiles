@@ -22,6 +22,11 @@ function strlen {
     echo ${#str}
 }
 
+function rand_str {
+    local len=$1
+    cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c $len
+}
+
 function rand_no {
     local ceil=10
     if [ ! -z $1 ] ; then
