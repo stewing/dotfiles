@@ -125,7 +125,6 @@ case $- in
     if [ `uname -s` == "Darwin" ] ; then 
         PATH=$PATH:/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/bin
         DYLD_FALLBACK_LIBRARY_PATH=net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/lib
-        #DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
     fi
     if [ ! -d "$HISTDIR" ] ; then
         mkdir "$HISTDIR"
@@ -160,14 +159,6 @@ if [ -x $COMPLETION_FILE ] ; then
 fi
 
 PYTHONPATH=/System/Library/Frameworks/Python.framework
-
-
-# pan
-alias mac_uninst_ppk='bash -c "for f in /pan/ppk/* ; do /usr/pan/bin/sudo \$f uninstall; done"' 
-alias mac_inst_ppk='if [ -e /opt/pan/bin/panfs_trace ] ; then echo "Found existing installation, removing..." ; mac_uninst_ppk; fi; echo "Installing current packages."; bash -c "for f in darwin_14_amd64/debug/releng/spool/panfs-{apps,benchmarks,macosx10.10,test,tools}.ppk ; do /usr/pan/bin/sudo \$f install; done"'
-function reboot_pe {
-    ssh scripthost-pa /usr/pan/bin/rpower --reset $1
-}
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
