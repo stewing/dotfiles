@@ -24,6 +24,9 @@ function strlen {
 
 function rand_str {
     local len=$1
+    if [ -z "$len" ] ; then 
+        len=10 
+    fi
     cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c $len
 }
 
@@ -39,6 +42,15 @@ function rand_no {
 
 # size
 alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (\$inp >= 1073741824) {\$s = 'GB', \$v = 1073741824;} elsif (\$inp >= 1048576) { \$s = 'MB';\$v = 1048576 } elsif (\$inp >= 1024) { \$s = 'KB'; \$v = 1024} printf(\"%0.2f%s\\n\", \$inp/\$v, \$s);'"
+function k() {
+    echo "$1*1024" | bc
+}
+function m() {
+    echo "$1*1024^2" | bc
+}
+function g() {
+    echo "$1*1024^3" | bc
+}
 
 # time
 # alias date='date +"%A %B %e %r"'
@@ -135,6 +147,10 @@ export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PR
 
 function epochtime {
     \date --date @$1 --utc
+}
+
+function prefix {
+    sed -e "s/^/$1: /"
 }
 
 # completion
