@@ -22,6 +22,14 @@ function strlen {
     echo ${#str}
 }
 
+function rand_str {
+    local len=$1
+    if [ -z "$len" ] ; then 
+        len=10 
+    fi
+    cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c $len
+}
+
 function rand_no {
     local ceil=10
     if [ ! -z $1 ] ; then
@@ -34,6 +42,15 @@ function rand_no {
 
 # size
 alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (\$inp >= 1073741824) {\$s = 'GB', \$v = 1073741824;} elsif (\$inp >= 1048576) { \$s = 'MB';\$v = 1048576 } elsif (\$inp >= 1024) { \$s = 'KB'; \$v = 1024} printf(\"%0.2f%s\\n\", \$inp/\$v, \$s);'"
+function k() {
+    echo "$1*1024" | bc
+}
+function m() {
+    echo "$1*1024^2" | bc
+}
+function g() {
+    echo "$1*1024^3" | bc
+}
 
 # time
 # alias date='date +"%A %B %e %r"'
@@ -108,7 +125,6 @@ case $- in
     if [ `uname -s` == "Darwin" ] ; then 
         PATH=$PATH:/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/bin
         DYLD_FALLBACK_LIBRARY_PATH=net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/lib
-        #DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
     fi
     if [ ! -d "$HISTDIR" ] ; then
         mkdir "$HISTDIR"
@@ -132,6 +148,10 @@ function epochtime {
     \date --date @$1 --utc
 }
 
+function prefix {
+    sed -e "s/^/$1: /"
+}
+
 # completion
 COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
 if [ -x $COMPLETION_FILE ] ; then
@@ -139,14 +159,6 @@ if [ -x $COMPLETION_FILE ] ; then
 fi
 
 PYTHONPATH=/System/Library/Frameworks/Python.framework
-
-
-# pan
-alias mac_uninst_ppk='bash -c "for f in /pan/ppk/* ; do /usr/pan/bin/sudo \$f uninstall; done"' 
-alias mac_inst_ppk='if [ -e /opt/pan/bin/panfs_trace ] ; then echo "Found existing installation, removing..." ; mac_uninst_ppk; fi; echo "Installing current packages."; bash -c "for f in darwin_14_amd64/debug/releng/spool/panfs-{apps,benchmarks,macosx10.10,test,tools}.ppk ; do /usr/pan/bin/sudo \$f install; done"'
-function reboot_pe {
-    ssh scripthost-pa /usr/pan/bin/rpower --reset $1
-}
 
 # git prompt integration
 #GIT_PROMPT_INTEGRATION=~/git/bash-git-prompt/gitprompt.sh
