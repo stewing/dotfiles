@@ -21,6 +21,8 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
+
+
 silent !mkdir /tmp/sewing > /dev/null 2>&1
 silent !mkdir /tmp/sewing/vim > /dev/null 2>&1
 silent !mkdir /tmp/sewing/vim/swap/ > /dev/null 2>&1
@@ -90,8 +92,8 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 " Remember info about open buffers on close
-set viminfo^=%
-
+"set viminfo^=%
+set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 " spacing
 set expandtab
@@ -152,7 +154,7 @@ if has("unix")
     let s:uname = system("uname")
     if s:uname == "Darwin\n" " mac
 
-        set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
+        set guifont=Anonymice\ Powerline:h13
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
         " clang_complete setup
         let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
@@ -176,7 +178,8 @@ endif
 
 
 if has('gui_running')
-    colorscheme inkpot
+    colorscheme Tomorrow-Night
+    set clipboard=unnamed
 else
     set background=dark
     colorscheme solarized
