@@ -98,7 +98,7 @@ set viminfo='100,n$HOME/.vim/files/info/viminfo
 " spacing
 set expandtab
 set smarttab
-set shiftwidth=4
+set shiftwidth=2
 set tabstop=4
 set listchars=trail:¡,precedes:«,extends:»,eol:↩,tab:▸\ 
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\

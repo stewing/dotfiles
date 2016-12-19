@@ -126,6 +126,7 @@ case $- in
         PATH=$PATH:/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/bin
         DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/lib
         #DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
+        launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
     fi
     if [ ! -d "$HISTDIR" ] ; then
         mkdir "$HISTDIR"
