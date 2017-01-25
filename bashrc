@@ -60,6 +60,9 @@ alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
 alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
 
+# weather
+weather="curl -s wttr.in/Pittsburgh"
+
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
 alias agp='ag --pager "less -R"'
@@ -175,6 +178,8 @@ ascii_array=(nul soh stx etx eot enq ack bel bs  ht  nl  vt  np  cr  so  si dle 
 function itoa {
 	echo ${ascii_array[$1]}
 }
+
+export -f itoa rand_str strlen rand_no k m g 
 
 # host-specific stuff
 case `hostname -s` in 
