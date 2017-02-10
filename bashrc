@@ -61,7 +61,7 @@ alias grep="grep --color"
 alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
 
 # weather
-weather="curl -s wttr.in/Pittsburgh"
+alias weather="curl -s wttr.in/Pittsburgh"
 
 # other utilities
 alias noblanks="sed '/^\s*$/d'"
