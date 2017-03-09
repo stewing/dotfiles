@@ -28,21 +28,21 @@
 // ----- Defines -----
 
 // You can change these to give your code its own name.
-#define STR_MANUFACTURER        L"Kiibohd"
+#define STR_MANUFACTURER        L"Input Club"
 #define STR_PRODUCT             L"Keyboard - WhiteFox PartialMap pjrcUSB full"
 #define STR_SERIAL              L"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX - mk20dx256vlh7"
 
 
 // Strings used in the CLI module
-#define CLI_Revision            "ba3c38bf844d0bea1681387ac8602e4ac1ba5f4c"
+#define CLI_Revision            "220632184329f06a4f9f8e6a5317d23e7305bd7e"
 #define CLI_Branch              "master"
 #define CLI_ModifiedStatus      "Clean"
 #define CLI_ModifiedFiles       "\r\n\t"
 #define CLI_RepoOrigin          "https://github.com/kiibohd/controller.git"
-#define CLI_CommitDate          "2016-10-10 23:15:13 -0700"
-#define CLI_CommitAuthor        "GitHub <noreply@github.com>"
+#define CLI_CommitDate          "2017-02-20 16:38:15 -0800"
+#define CLI_CommitAuthor        "Jacob Alexander <haata@kiibohd.com>"
 #define CLI_Modules             "Scan(WhiteFox) Macro(PartialMap) Output(pjrcUSB) Debug(full)"
-#define CLI_BuildDate           "2017-02-11 19:36:16 +0000"
+#define CLI_BuildDate           "2017-03-07 16:48:16 +0000"
 #define CLI_BuildOS             "Linux-4.1.5-x86_64-linode61"
 #define CLI_Arch                "arm"
 #define CLI_Chip                "mk20dx256vlh7"
@@ -56,5 +56,5 @@
 // match the INF file.
 #define VENDOR_ID               0x1C11
 #define PRODUCT_ID              0xB04D
-#define BCD_VERSION             479
+#define BCD_VERSION             509
 

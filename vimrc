@@ -4,6 +4,7 @@
 
 " general
 set nocompatible
+set shell=/bin/bash
 set background=dark
 set history=700
 set autoread
@@ -40,6 +41,7 @@ set runtimepath+=$HOME/.vim/bundle
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 " Vundle setup -- MODULES
 call vundle#begin()
+Plugin 'chriskempson/base16-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/taglist.vim'
@@ -100,7 +102,7 @@ set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=4
-set listchars=trail:¡,precedes:«,extends:»,eol:↩,tab:▸\ 
+set listchars=trail:¡,precedes:«,extends:»,eol:↩,tab:▸\
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
 
 " language-specific settings
@@ -124,6 +126,12 @@ command Wqa wqa
 command W w
 command Q q
 
+" base16 setup
+let base16colorspace=256
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " BufExplorer Setup
 let g:bufExplorerShowRelativePath=1     " Show relative paths.
@@ -131,7 +139,7 @@ let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 
 " Airline Config
 let g:airline_powerline_fonts=1
-let g:airline_theme='wombat'
+let g:airline_theme='base16_colors'
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
 let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v'
@@ -151,14 +159,12 @@ set tags+=src/tags,src/TAGS
 
 " System-specific setttings
 if has("unix")
-    let s:uname = system("uname")
+    let s:uname = system("/usr/bin/uname")
     if s:uname == "Darwin\n" " mac
-
-        set guifont=Anonymice\ Powerline:h13
+        "set guifont=Anonymice\ Powerline:h13
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
         " clang_complete setup
         let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
-
 
     else " linux, bsd
 
@@ -176,16 +182,15 @@ if has("unix")
     endif
 endif
 
-
 if has('gui_running')
     colorscheme Tomorrow-Night
     set clipboard=unnamed
 else
     set background=dark
-    colorscheme solarized
+    " colorscheme base16-grayscale-dark
 endif
 
 if &diff
     set background=dark
-    colorscheme solarized
+    " colorscheme solarized
 endif

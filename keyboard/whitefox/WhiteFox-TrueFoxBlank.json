@@ -297,6 +297,10 @@
                 "0": {
                     "key": "Q",
                     "label": "Q"
+                },
+                "1": {
+                    "key": "#:ledControl( 5, 0, 0 )",
+                    "label": "LED OFF"
                 }
             }
         },
@@ -310,6 +314,10 @@
                 "0": {
                     "key": "W",
                     "label": "W"
+                },
+                "1": {
+                    "key": "#:ledControl( 3, 15, 0 )",
+                    "label": "LED-"
                 }
             }
         },
@@ -323,6 +331,10 @@
                 "0": {
                     "key": "E",
                     "label": "E"
+                },
+                "1": {
+                    "key": "#:ledControl( 4, 15, 0 )",
+                    "label": "LED+"
                 }
             }
         },
@@ -414,6 +426,10 @@
                 "0": {
                     "key": "P",
                     "label": "P"
+                },
+                "1": {
+                    "key": "CONS:SCANPREVIOUSTRACK",
+                    "label": "PREV"
                 }
             }
         },
@@ -492,6 +508,10 @@
                 "0": {
                     "key": "A",
                     "label": "A"
+                },
+                "1": {
+                    "key": "CONS:MUTE",
+                    "label": "MUTE"
                 }
             }
         },
@@ -505,6 +525,10 @@
                 "0": {
                     "key": "S",
                     "label": "S"
+                },
+                "1": {
+                    "key": "CONS:VOLUMEDOWN",
+                    "label": "VOL-"
                 }
             }
         },
@@ -518,6 +542,10 @@
                 "0": {
                     "key": "D",
                     "label": "D"
+                },
+                "1": {
+                    "key": "CONS:VOLUMEUP",
+                    "label": "VOL+"
                 }
             }
         },
@@ -531,6 +559,10 @@
                 "0": {
                     "key": "F",
                     "label": "F"
+                },
+                "1": {
+                    "key": "CONS:PAUSEPLAY",
+                    "label": "PL\/PS"
                 }
             }
         },
@@ -674,6 +706,10 @@
                 "0": {
                     "key": "Z",
                     "label": "Z"
+                },
+                "1": {
+                    "key": "CONS:BRIGHTNESSDECREMENT",
+                    "label": "SCRN-"
                 }
             }
         },
@@ -687,6 +723,10 @@
                 "0": {
                     "key": "X",
                     "label": "X"
+                },
+                "1": {
+                    "key": "CONS:BRIGHTNESSINCREMENT",
+                    "label": "SCRN+"
                 }
             }
         },
@@ -700,6 +740,10 @@
                 "0": {
                     "key": "C",
                     "label": "C"
+                },
+                "1": {
+                    "key": "CONS:CALCULATOR",
+                    "label": "CALC"
                 }
             }
         },
@@ -739,6 +783,10 @@
                 "0": {
                     "key": "N",
                     "label": "N"
+                },
+                "1": {
+                    "key": "CONS:SCANNEXTTRACK",
+                    "label": "NEXT"
                 }
             }
         },
@@ -841,8 +889,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "FUN1",
-                    "label": "\u01921"
+                    "key": "FUN2",
+                    "label": "\u01922"
                 }
             }
         },
@@ -906,8 +954,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "RCTRL",
-                    "label": "RCTRL"
+                    "key": "FUN1",
+                    "label": "\u01921"
                 }
             }
         },

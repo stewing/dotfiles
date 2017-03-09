@@ -126,9 +126,8 @@ case $- in
         true
     fi
     if [ `uname -s` == "Darwin" ] ; then 
-        PATH=$PATH:/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/bin
-        DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/sb31/sewing/macos/homebrew/lib
-        #DYLD_FALLBACK_LIBRARY_PATH=/net/nfs.paneast.panasas.com/home/sewing/git/homebrew/lib
+        PATH=$PATH:/usr/local/bin/
+        # DYLD_FALLBACK_LIBRARY_PATH=
         launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
     fi
     if [ ! -d "$HISTDIR" ] ; then
@@ -189,3 +188,7 @@ case `hostname -s` in
     *)
         ;;
 esac
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
