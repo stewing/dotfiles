@@ -254,10 +254,6 @@
                 "0": {
                     "key": "BACKTICK",
                     "label": "`"
-                },
-                "1": {
-                    "key": "DELETE",
-                    "label": "DEL"
                 }
             }
         },
@@ -472,6 +468,10 @@
                 "0": {
                     "key": "BACKSPACE",
                     "label": "BKSP"
+                },
+                "1": {
+                    "key": "DELETE",
+                    "label": "DEL"
                 }
             }
         },
@@ -884,8 +884,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "FUNCTION1",
-                    "label": "\u01921"
+                    "key": "FUN3",
+                    "label": "\u01923"
                 }
             }
         },
