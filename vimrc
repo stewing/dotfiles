@@ -41,27 +41,28 @@ set runtimepath+=$HOME/.vim/bundle
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 " Vundle setup -- MODULES
 call vundle#begin()
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/ctags.vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'majutsushi/tagbar'
+Plugin 'mbbill/undotree'
+Plugin 'mhinz/vim-startify'
+Plugin 'morhetz/gruvbox'
+Plugin 'rking/ag.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-vinegar'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-startify'
-Plugin 'rking/ag.vim'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'wellle/targets.vim'
-Plugin 'Rip-Rip/clang_complete'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mbbill/undotree'
-Plugin 'tpope/vim-vinegar'
-Plugin 'morhetz/gruvbox'
-Plugin 'rust-lang/rust.vim'
 call vundle#end()
 "
 " Vundle setup -- END
@@ -161,7 +162,7 @@ set tags+=src/tags,src/TAGS
 if has("unix")
     let s:uname = system("/usr/bin/uname")
     if s:uname == "Darwin\n" " mac
-        "set guifont=Anonymice\ Powerline:h13
+        set guifont=Anonymice\ Powerline:h13
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
         " clang_complete setup
         let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
@@ -183,8 +184,8 @@ if has("unix")
 endif
 
 if has('gui_running')
-    colorscheme Tomorrow-Night
-    set clipboard=unnamed
+    colorscheme base16-tomorrow-night
+    "set clipboard=unnamed
 else
     set background=dark
     " colorscheme base16-grayscale-dark
