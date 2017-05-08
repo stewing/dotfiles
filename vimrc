@@ -48,6 +48,7 @@ Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
 Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-startify'
@@ -101,7 +102,7 @@ set viminfo='100,n$HOME/.vim/files/info/viminfo
 " spacing
 set expandtab
 set smarttab
-set shiftwidth=2
+set shiftwidth=4
 set tabstop=4
 set listchars=trail:¡,precedes:«,extends:»,eol:↩,tab:▸\
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
@@ -157,6 +158,13 @@ let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
 " CTags
 set tags+=src/tags,src/TAGS
+
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " System-specific setttings
 if has("unix")

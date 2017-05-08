@@ -61,12 +61,23 @@ function g()
 }
 
 # time
-# alias date='date +"%A %B %e %r"'
 alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
 alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+function epochtime {
+    if [ -z "$1" ] ; then
+        echo "Usage: $0 <epoch_seconds>"
+        return 1
+    fi
+
+    if [ "$OS" == "Darwin" ] ; then
+        \date -r $1
+    elif [ "$OS" == "Linux" ] ; then
+        \date --date @$1 --utc
+    fi
+}
 
 # weather
 alias weather="curl -s wttr.in/Pittsburgh"
@@ -184,9 +195,6 @@ export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PR
 
 # functions
 
-function epochtime {
-    \date --date @$1 --utc
-}
 
 function prefix {
     sed -e "s/^/$1: /"
