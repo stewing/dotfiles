@@ -128,6 +128,9 @@ command Wqa wqa
 command W w
 command Q q
 
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " base16 setup
 let base16colorspace=256
 if filereadable(expand("~/.vimrc_background"))

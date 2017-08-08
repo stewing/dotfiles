@@ -28,8 +28,8 @@ function strlen
 function rand_str
 {
     local len=$1
-    if [ -z "$len" ] ; then 
-        len=10 
+    if [ -z "$len" ] ; then
+        len=10
     fi
     cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c $len
 }
@@ -61,6 +61,7 @@ function g()
 }
 
 # time
+alias now="date -u +\"%Y-%m-%dT%TZ\""
 alias rt_ms="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias rt_us="perl -n -e 'printf \"%02dh%02dm%02ds\\n\",(gmtime(\$_/1000))[2,1,0];'"
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
@@ -103,7 +104,7 @@ function colors_dark
 # cdexec (PROMPT_COMMAND)
 function cdexec
 {
-    if [ -x .cdexec ] ; then 
+    if [ -x .cdexec ] ; then
         file=`realpath .cdexec`
         if [ `stat -c %A $file | cut -c6` == "-" ] && \
             [ `stat -c %A $file | cut -c9` == "-" ] && \
@@ -120,7 +121,7 @@ PS1="\h % "
 PAGER="less"
 FIGNORE=".o:~"
 MAKEFLAGS="-j 4"
-if [ -e /proc/cpuinfo ] ; then 
+if [ -e /proc/cpuinfo ] ; then
     MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 fi
 DIFF="vimdiff -R"
@@ -149,7 +150,7 @@ function git_changed
     git diff --name-only|xargs -r -L1 realpath |oneline
 }
 
-function git_changed_rec 
+function git_changed_rec
 {
     my_pwd=$PWD
     for git_dir in `git_repos` ; do
@@ -166,11 +167,11 @@ export P4CONFIG P4EDITOR P4DIFF
 # set up interactive vs. non-interactive stuff...
 case $- in
     *i*)    # interactive shell
-        if [ "$OS" == "Linux" ] ; then 
+        if [ "$OS" == "Linux" ] ; then
             alias vimj="vim -O2 `find . -name \*.java -printf "%P "`"
             true
         fi
-        if [ "$OS" == "Darwin" ] ; then 
+        if [ "$OS" == "Darwin" ] ; then
             PATH=$PATH:/usr/local/bin/
             # DYLD_FALLBACK_LIBRARY_PATH=
             launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
@@ -178,7 +179,7 @@ case $- in
         if [ ! -d "$HISTDIR" ] ; then
             mkdir "$HISTDIR"
         fi
-        if [ "$OS" == 'FreeBSD' ] ; then 
+        if [ "$OS" == 'FreeBSD' ] ; then
             true
             # PROMPT_COMMAND='echo foo'
         else
@@ -214,10 +215,10 @@ function itoa {
 	echo ${ascii_array[$1]}
 }
 
-export -f itoa rand_str strlen rand_no k m g 
+export -f itoa rand_str strlen rand_no k m g
 
 # host-specific stuff
-case `hostname -s` in 
+case `hostname -s` in
     sewing-mbp)
         alias sudo=/usr/bin/sudo
         ;;
