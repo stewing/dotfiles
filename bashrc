@@ -71,11 +71,19 @@ function epochtime {
         echo "Usage: $0 <epoch_seconds>"
         return 1
     fi
-
     if [ "$OS" == "Darwin" ] ; then
         \date -r $1
     elif [ "$OS" == "Linux" ] ; then
         \date --date @$1 --utc
+    fi
+}
+
+function now() {
+    if [ $# -gt 0 ] ; then
+        ARGS=$@
+        date -u +"%Y-%m-%dT%TZ" -d "$ARGS"
+    else
+        date -u +"%Y-%m-%dT%TZ"
     fi
 }
 
@@ -89,6 +97,7 @@ alias agp='ag --pager "less -R"'
 alias addrs="ip -o a | cut -d ' ' -f2,7"
 alias uc="tr '[:lower:]' '[:upper:]'"
 alias lc="tr '[:upper:]' '[:lower:]'"
+alias jpp="python -mjson.tool"
 
 function grep1
 {
@@ -124,13 +133,23 @@ if [ -e /proc/cpuinfo ] ; then
     MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 fi
 DIFF="vimdiff -R"
-HISTDIR="$HOME/.history"
 
 # history
 shopt -s histappend
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
 HISTTIMEFORMAT="%Y-%m-%d-%T "
 HISTSIZE=5000
+HISTDIR="$HOME/.history"
+
+function hs
+{
+    sval="$1"
+    if [ -z "$sval" ] ; then
+        echo "need regex to search"
+        return 1
+    fi
+    grep --no-filename $sval "$HISTDIR/"* | cut -d' ' -f7- | sort | uniq
+}
 
 # P4
 alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}'"
@@ -158,7 +177,6 @@ function git_changed_rec
         cd "$my_pwd"
     done
 }
-
 alias vimch="vim -O3 \`git_changed_rec\`"
 
 export P4CONFIG P4EDITOR P4DIFF
@@ -166,36 +184,35 @@ export P4CONFIG P4EDITOR P4DIFF
 # set up interactive vs. non-interactive stuff...
 case $- in
     *i*)    # interactive shell
-        if [ "$OS" == "Linux" ] ; then 
-            alias vimj="vim -O2 `find . -name \*.java -printf "%P "`"
-            true
-        fi
-        if [ "$OS" == "Darwin" ] ; then 
-            PATH=$PATH:/usr/local/bin/
-            # DYLD_FALLBACK_LIBRARY_PATH=
-            launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
-        fi
-        if [ ! -d "$HISTDIR" ] ; then
-            mkdir "$HISTDIR"
-        fi
-        if [ "$OS" == 'FreeBSD' ] ; then 
-            true
-            # PROMPT_COMMAND='echo foo'
-        else
-            PROMPT_COMMAND='echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
-        fi
-        BASE16_SHELL=$HOME/.config/base16-shell/
-        [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-        ;;
+    if [ `uname -s` == "Linux" ] ; then 
+        true
+    fi
+    if [ `uname -s` == "Darwin" ] ; then 
+        PATH=$PATH:/usr/local/bin/
+        # DYLD_FALLBACK_LIBRARY_PATH=
+        launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
+    fi
+    if [ ! -d "$HISTDIR" ] ; then
+        mkdir "$HISTDIR"
+    fi
+    if [ `uname -s` == 'FreeBSD' ] ; then 
+        true
+        # PROMPT_COMMAND='echo foo'
+    else
+        PROMPT_COMMAND='echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
+    fi
+
+    BASE16_SHELL=$HOME/.config/base16-shell/
+    [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+    ;;
     *)      # non-interactive shell
-        ;;
+    ;;
 esac
 
 export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # functions
-
-
 function prefix {
     sed -e "s/^/$1: /"
 }
@@ -215,14 +232,3 @@ function itoa {
 }
 
 export -f itoa rand_str strlen rand_no k m g 
-
-# host-specific stuff
-case `hostname -s` in 
-    sewing-mbp)
-        alias sudo=/usr/bin/sudo
-        ;;
-    *)
-        ;;
-esac
-
-
