@@ -246,4 +246,3 @@ function itoa {
 }
 
 export -f itoa rand_str strlen rand_no k m g
-

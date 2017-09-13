@@ -22,14 +22,12 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-
-
-silent !mkdir /tmp/sewing > /dev/null 2>&1
-silent !mkdir /tmp/sewing/vim > /dev/null 2>&1
-silent !mkdir /tmp/sewing/vim/swap/ > /dev/null 2>&1
-silent !mkdir /tmp/sewing/vim/backup/ > /dev/null 2>&1
-set directory=/tmp/sewing/vim/swap/
-set backupdir=/tmp/sewing/vim/backup/
+silent !mkdir /tmp/stewing > /dev/null 2>&1
+silent !mkdir /tmp/stewing/vim > /dev/null 2>&1
+silent !mkdir /tmp/stewing/vim/swap/ > /dev/null 2>&1
+silent !mkdir /tmp/stewing/vim/backup/ > /dev/null 2>&1
+set directory=/tmp/stewing/vim/swap/
+set backupdir=/tmp/stewing/vim/backup/
 set mouse-=a
 set t_ut=
 
@@ -41,33 +39,45 @@ set runtimepath+=$HOME/.vim/bundle
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 " Vundle setup -- MODULES
 call vundle#begin()
-Plugin 'Rip-Rip/clang_complete'
+" git-related
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
+
+" airline
 Plugin 'bling/vim-airline'
+
+" colors
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
+
+Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'majutsushi/tagbar'
 Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-startify'
-Plugin 'morhetz/gruvbox'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'rking/ag.vim'
-Plugin 'rust-lang/rust.vim'
+" Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/OmniCppComplete'
+
 Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/OmniCppComplete'
+" tags
+Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/taglist.vim'
+
 Plugin 'wellle/targets.vim'
+Plugin 'wincent/command-t'
+Plugin 'mtth/scratch.vim'
 call vundle#end()
 "
 " Vundle setup -- END
 "
+
 
 " scrolling
 set scrolloff=2
@@ -81,9 +91,6 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
-nnoremap  <CR> :noh<CR>
-"nnoremap W w
-"nnoremap Q q
 
 " filetype plugin/syntax
 filetype plugin on
@@ -96,7 +103,7 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 " Remember info about open buffers on close
-"set viminfo^=%
+silent !mkdir $HOME/.vim/files/info > /dev/null 2>&1
 set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 " spacing
@@ -119,17 +126,21 @@ set wildignore+=*.pyc
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
 " Common Command Mappings
-command WQ wq
-command Wq wq
-command Wa wa
-command WA wa
-command WQa wqa
-command Wqa wqa
-command W w
-command Q q
+nnoremap <CR> :noh<CR>
+"cnoremap W w!
+cnoremap Q q
+nnoremap <silent> <buffer> <cr> :nohls<cr>
+nnoremap \f :FZF<cr>
 
-"Remove all trailing whitespace by pressing F5
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+"" Command Mode Keys, ironically
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-p> <Up>
+"cnoremap <C-n> <Down>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f> <Right>
+"cnoremap <M-b> <S-Left>
+"cnoremap <M-f> <S-Right>
 
 " base16 setup
 let base16colorspace=256
@@ -145,8 +156,10 @@ let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 " Airline Config
 let g:airline_powerline_fonts=1
 let g:airline_theme='base16_colors'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
 let g:airline_section_b = '%{getcwd()}'
-let g:airline_section_c = '%t'
+let g:airline_section_c = '%t %m'
 let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v'
 ""  plugins
 let g:airline#extensions#tagbar#enabled=1
@@ -154,7 +167,7 @@ let g:airline#extensions#tagbar#flags='s'
 " let g:airline#extensions#syntastic#enabled=1
 
 " ag.vim setup
-let g:ag_prg="/fs/home/sewing/.packages/bin/ag --vimgrep"
+let g:ag_prg="/apollo/env/envImprovement/bin/ag --vimgrep"
 
 " clang_complete setup
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
@@ -162,18 +175,11 @@ let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 " CTags
 set tags+=src/tags,src/TAGS
 
-" vim-easy-align
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " System-specific setttings
 if has("unix")
     let s:uname = system("/usr/bin/uname")
     if s:uname == "Darwin\n" " mac
-        set guifont=Anonymice\ Powerline:h13
+        "set guifont=Anonymice\ Powerline:h13
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
         " clang_complete setup
         let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
@@ -182,7 +188,7 @@ if has("unix")
 
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
         " tagbar setup
-        let g:tagbar_ctags_bin="/fs/home/sewing/.packages/bin/ctags"
+        let g:tagbar_ctags_bin="/usr/bin/ctags"
 
         " clang_complete setup
         if !empty(glob("/usr/lib/libclang.so.0"))
@@ -195,8 +201,8 @@ if has("unix")
 endif
 
 if has('gui_running')
-    colorscheme base16-tomorrow-night
-    "set clipboard=unnamed
+    colorscheme Tomorrow-Night
+    set clipboard=unnamed
 else
     set background=dark
     " colorscheme base16-grayscale-dark
@@ -206,3 +212,27 @@ if &diff
     set background=dark
     " colorscheme solarized
 endif
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+set background=dark
+
+"
+" vim-javacomplete2 setup
+"
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+"nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+"nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"imap <F5> <Plug>(JavaComplete-Imports-Add)
+
+"nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
+"nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
