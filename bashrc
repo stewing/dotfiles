@@ -247,6 +247,10 @@ function itoa {
 
 export -f itoa rand_str strlen rand_no k m g
 
-for rc in $HOME/.bashrc.* ; do
-    source "$rc"
-done
+compgen -G "$HOME/.bashrc.*" > /dev/null
+rc=$?
+if [ "$rc" -eq 0 ] ; then 
+    for rc in $HOME/.bashrc.* ; do
+        source "$rc"
+    done
+fi
