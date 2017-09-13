@@ -246,3 +246,7 @@ function itoa {
 }
 
 export -f itoa rand_str strlen rand_no k m g
+
+for rc in $HOME/.bashrc.* ; do
+    source "$rc"
+done

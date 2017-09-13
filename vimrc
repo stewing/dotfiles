@@ -142,6 +142,11 @@ nnoremap \f :FZF<cr>
 "cnoremap <M-b> <S-Left>
 "cnoremap <M-f> <S-Right>
 
+" local setup
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
 " base16 setup
 let base16colorspace=256
 if filereadable(expand("~/.vimrc_background"))
@@ -161,13 +166,9 @@ let g:airline#extensions#branch#empty_message = ''
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t %m'
 let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v'
-""  plugins
+"  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
-" let g:airline#extensions#syntastic#enabled=1
-
-" ag.vim setup
-let g:ag_prg="/apollo/env/envImprovement/bin/ag --vimgrep"
 
 " clang_complete setup
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
