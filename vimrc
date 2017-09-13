@@ -26,6 +26,7 @@ silent !mkdir /tmp/stewing > /dev/null 2>&1
 silent !mkdir /tmp/stewing/vim > /dev/null 2>&1
 silent !mkdir /tmp/stewing/vim/swap/ > /dev/null 2>&1
 silent !mkdir /tmp/stewing/vim/backup/ > /dev/null 2>&1
+silent !mkdir $HOME/.vim/files/info/
 set directory=/tmp/stewing/vim/swap/
 set backupdir=/tmp/stewing/vim/backup/
 set mouse-=a
