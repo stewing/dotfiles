@@ -22,11 +22,18 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-silent !mkdir /tmp/stewing > /dev/null 2>&1
-silent !mkdir /tmp/stewing/vim > /dev/null 2>&1
-silent !mkdir /tmp/stewing/vim/swap/ > /dev/null 2>&1
-silent !mkdir /tmp/stewing/vim/backup/ > /dev/null 2>&1
-silent !mkdir $HOME/.vim/files/info/
+"silent !mkdir /tmp/stewing > /dev/null 2>&1
+"silent !mkdir /tmp/stewing/vim > /dev/null 2>&1
+"silent !mkdir /tmp/stewing/vim/swap/ > /dev/null 2>&1
+"silent !mkdir /tmp/stewing/vim/backup/ > /dev/null 2>&1
+"silent !mkdir $HOME/.vim/files/info/
+
+for dirname in ["/tmp/stewing", "/tmp/stewing/vim", "/tmp/stewing/vim/swap", "/tmp/stewing/vim/backup", $HOME."/.vim/files/info"]
+    if !isdirectory(dirname)
+        call mkdir(dirname, "p")
+    endif
+endfor
+
 set directory=/tmp/stewing/vim/swap/
 set backupdir=/tmp/stewing/vim/backup/
 set mouse-=a
@@ -104,7 +111,6 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 " Remember info about open buffers on close
-silent !mkdir $HOME/.vim/files/info > /dev/null 2>&1
 set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 " spacing
