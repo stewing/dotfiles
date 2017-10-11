@@ -65,9 +65,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-startify'
-Plugin 'Rip-Rip/clang_complete'
 Plugin 'rking/ag.vim'
-" Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-vinegar'
 
@@ -81,6 +79,11 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'wellle/targets.vim'
 Plugin 'wincent/command-t'
 Plugin 'mtth/scratch.vim'
+
+" completion
+Plugin 'Rip-Rip/clang_complete'
+"Plugin 'artur-shaik/vim-javacomplete2'
+
 call vundle#end()
 "
 " Vundle setup -- END
@@ -231,16 +234,16 @@ set background=dark
 "
 " vim-javacomplete2 setup
 "
-"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-"nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 
-"nmap <F5> <Plug>(JavaComplete-Imports-Add)
-"imap <F5> <Plug>(JavaComplete-Imports-Add)
+nmap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F5> <Plug>(JavaComplete-Imports-Add)
 
-"nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 
-"nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-"imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
