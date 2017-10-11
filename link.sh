@@ -1,5 +1,5 @@
 #!/bin/sh
 
-ln bashrc $HOME/.bashrc
-ln vimrc  $HOME/.vimrc
-ln tmux.conf $HOME/.tmux.conf
+ln -f bashrc $HOME/.bashrc
+ln -f vimrc  $HOME/.vimrc
+ln -f tmux.conf $HOME/.tmux.conf
