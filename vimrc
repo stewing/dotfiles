@@ -247,3 +247,5 @@ imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+set background=dark
