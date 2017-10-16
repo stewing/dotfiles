@@ -110,14 +110,32 @@ alias uc="tr '[:lower:]' '[:upper:]'"
 alias lc="tr '[:upper:]' '[:lower:]'"
 alias jpp="python -mjson.tool"
 
-function grep1
+function grepN
 {
-    if [ -z "$1" ] ; then
+    lines=$1
+    if [ -z "$2" ] ; then
         echo "Need a pattern"
         return 1
     fi
-    pattern="$1"
-    (head -n1; grep $pattern)
+    pattern="$2"
+    (head -n$lines ; grep $pattern)
+}
+
+function grep1
+{
+    grepN 1 $@
+}
+function grep2
+{
+    grepN 2 $@
+}
+function grep3
+{
+    grepN 3 $@
+}
+function grep4
+{
+    grepN 4 $@
 }
 
 function colors_dark
