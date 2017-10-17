@@ -45,6 +45,8 @@ function rand_no
     return $myrand
 }
 
+export -f strlen rand_str rand_no
+
 # size
 alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (\$inp >= 1073741824) {\$s = 'GB', \$v = 1073741824;} elsif (\$inp >= 1048576) { \$s = 'MB';\$v = 1048576 } elsif (\$inp >= 1024) { \$s = 'KB'; \$v = 1024} printf(\"%0.2f%s\\n\", \$inp/\$v, \$s);'"
 function k()
@@ -59,6 +61,8 @@ function g()
 {
     echo "$1*1024^3" | bc
 }
+
+export -f k m g
 
 # time
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
@@ -97,6 +101,8 @@ function now() {
         date -u +"%Y-%m-%dT%TZ"
     fi
 }
+
+export -f epochtime now
 
 # weather
 alias weather="curl -s wttr.in/Pittsburgh"
@@ -137,6 +143,8 @@ function grep4
 {
     grepN 4 $@
 }
+
+export -f grep{1..4}
 
 function colors_dark
 {
@@ -191,6 +199,8 @@ P4CONFIG=Perforce
 P4EDITOR=vim
 P4DIFF="vimdiff -R"
 
+export P4CONFIG P4EDITOR P4DIFF
+
 # git
 function git_repos
 {
@@ -212,8 +222,6 @@ function git_changed_rec
     done
 }
 alias vimch="vim -O3 \`git_changed_rec\`"
-
-export P4CONFIG P4EDITOR P4DIFF
 
 # set up interactive vs. non-interactive stuff...
 case $- in
