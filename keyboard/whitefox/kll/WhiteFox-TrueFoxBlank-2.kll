@@ -1,0 +1,16 @@
+Name = "WhiteFox";
+Layout = "TrueFoxBlank";
+Base = "AllBlank";
+Version = "0.2";
+Author = "HaaTa (Jacob Alexander) 2015";
+KLL = "0.3c";
+Date = "2016-05-30";
+Generator = "KIICONF 0.2";
+
+U"P" : U"UP";
+U"J" : U"F11";
+U"K" : U"F12";
+U"L" : U"LEFT";
+U"SEMICOLON" : U"DOWN";
+U"QUOTE" : U"RIGHT";
+
