@@ -246,7 +246,7 @@ case $- in
         if [ ! -d "$HISTDIR" ] ; then
             mkdir "$HISTDIR"
         fi
-        PROMPT_COMMAND='[ -d "$HISTDIR" ] || mkdir "$HISTDIR" ; echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log'
+        PROMPT_COMMAND='[ -d "$HISTDIR" ] || mkdir "$HISTDIR" ; echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log; ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log'
 
         BASE16_SHELL=$HOME/.config/base16-shell/
         [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -285,3 +285,4 @@ if [ "$rc" -eq 0 ] ; then
         source "$rc"
     done
 fi
+

@@ -83,6 +83,7 @@ Plugin 'mtth/scratch.vim'
 " completion
 Plugin 'Rip-Rip/clang_complete'
 "Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'othree/vim-autocomplpop'
 
 call vundle#end()
 "
@@ -121,7 +122,14 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set listchars=trail:¡,precedes:«,extends:»,eol:↩,tab:▸\
+set listchars=trail:¡,precedes:«,extends:»,eol:↩,nbsp:↔,tab:●○
+" examples: 
+" precedes:
+" extends
+" tail:     
+" eol:
+" nbsp:  
+: tab:  	
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
 
 " language-specific settings
@@ -137,8 +145,9 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
 " Common Command Mappings
 nnoremap <CR> :noh<CR>
-"cnoremap W w!
-cnoremap Q q
+command W w
+command Q q
+nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
 nnoremap \f :FZF<cr>
 
