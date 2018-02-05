@@ -9,15 +9,25 @@ shopt -s extglob
 
 OS=`uname -s`
 
+#
 # path utilities
 alias realpath="perl -MCwd -e 'print Cwd::realpath(shift()).\"\\n\";'"
 
+#
 # numbers, bases
 alias hex='printf "0x%08x\n"'
 alias dec='printf "%d\n"'
 alias bin="perl -e 'printf(\"%b\n\", shift());'"
 
-# strings, etc
+# 
+# Spaces, text, etc.
+#
+alias noblanks="sed '/^\s*$/d'"
+alias oneline="tr '\n' ' '"
+alias uc="tr '[:lower:]' '[:upper:]'"
+alias lc="tr '[:upper:]' '[:lower:]'"
+alias trimwsr="find . -type f | xargs sed -i 's/[ \\t]*$//'"
+alias bracketed_paste_off='printf "\e[?2004l"'
 
 function strlen
 {
@@ -107,13 +117,9 @@ export -f epochtime now
 # weather
 alias weather="curl -s wttr.in/Pittsburgh"
 
-# other utilities
-alias noblanks="sed '/^\s*$/d'"
-alias oneline="tr '\n' ' '"
+# Misc stuff
 alias agp='ag --pager "less -R"'
 alias addrs="ip -o a | cut -d ' ' -f2,7"
-alias uc="tr '[:lower:]' '[:upper:]'"
-alias lc="tr '[:upper:]' '[:lower:]'"
 alias jpp="python -mjson.tool"
 
 function grepN

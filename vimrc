@@ -59,15 +59,17 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
 
+"
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-startify'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-vinegar'
+Plugin 'Shougo/denite.nvim'
 
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/OmniCppComplete'
@@ -81,9 +83,8 @@ Plugin 'wincent/command-t'
 Plugin 'mtth/scratch.vim'
 
 " completion
-Plugin 'Rip-Rip/clang_complete'
-"Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'othree/vim-autocomplpop'
+"Plugin 'Rip-Rip/clang_complete'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 call vundle#end()
 "
@@ -115,7 +116,11 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 " Remember info about open buffers on close
-set viminfo='100,n$HOME/.vim/files/info/viminfo
+if has('nvim')
+    set viminfo='100,n$HOME/.vim/files/info/shada
+else
+    set viminfo='100,n$HOME/.vim/files/info/viminfo
+endif
 
 " spacing
 set expandtab
@@ -151,7 +156,7 @@ nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
 nnoremap \f :FZF<cr>
 
-"" Command Mode Keys, ironically
+"" Command Mode Keys, ironically    
 "cnoremap <C-a> <Home>
 "cnoremap <C-e> <End>
 "cnoremap <C-p> <Up>
@@ -241,6 +246,10 @@ endif
 set background=dark
 
 "
+" Whitespace
+"
+
+"
 " vim-javacomplete2 setup
 "
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -256,5 +265,14 @@ imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+function SetJavacompleteClasspath()
+    let g:JavaComplete_LibsPath = system('brazil-path build.classpath 2>/dev/null')
+    echo printf("%s", g:JavaComplete_LibsPath);
+endfunction
+
+"
+" end vim-javacomplete2
+"
 
 set background=dark
