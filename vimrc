@@ -78,8 +78,9 @@ Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/taglist.vim'
 
 Plugin 'wellle/targets.vim'
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t'
 Plugin 'mtth/scratch.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " completion
 "Plugin 'Rip-Rip/clang_complete'
@@ -153,7 +154,7 @@ cnoremap Wq wq
 cnoremap WQ wq
 nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
-nnoremap \f :CommandT<cr>
+nnoremap \f :CtrlP<cr>
 
 "" Command Mode Keys, ironically    
 "cnoremap <C-a> <Home>
@@ -197,11 +198,16 @@ let g:airline#extensions#tagbar#flags='s'
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 
 " command-t
-let g:CommandTFileScanner = "git"
-let g:CommandTMaxHeight = 20
-let g:CommandTInputDebounce = 50
-let g:CommandTMinHeight = 20
-let g:CommandTMaxCachedDirectories = 20
+" let g:CommandTFileScanner = "git"
+" let g:CommandTMaxHeight = 20
+" let g:CommandTInputDebounce = 50
+" let g:CommandTMinHeight = 20
+" let g:CommandTMaxCachedDirectories = 20
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|build)$',
+  \ 'file': '\v(.git|TAGS)',
+  \ }
 
 " CTags
 set tags+=src/tags,src/TAGS
