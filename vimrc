@@ -204,10 +204,8 @@ let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
 " let g:CommandTMinHeight = 20
 " let g:CommandTMaxCachedDirectories = 20
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|build)$',
-  \ 'file': '\v(.git|TAGS)',
-  \ }
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " CTags
 set tags+=src/tags,src/TAGS
