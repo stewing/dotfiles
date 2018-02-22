@@ -8,6 +8,7 @@ set shell=/bin/bash
 set background=dark
 set history=700
 set autoread
+set autoindent
 set ruler
 set lazyredraw
 set hid
@@ -59,10 +60,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
 
-"
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-startify'
@@ -84,8 +83,6 @@ Plugin 'mtth/scratch.vim'
 
 " completion
 "Plugin 'Rip-Rip/clang_complete'
-Plugin 'artur-shaik/vim-javacomplete2'
-
 call vundle#end()
 "
 " Vundle setup -- END
@@ -154,7 +151,7 @@ command W w
 command Q q
 nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
-nnoremap \f :FZF<cr>
+nnoremap \f :CommandT<cr>
 
 "" Command Mode Keys, ironically    
 "cnoremap <C-a> <Home>
@@ -183,8 +180,8 @@ let g:bufExplorerShowRelativePath=1     " Show relative paths.
 let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 
 " Airline Config
-let g:airline_powerline_fonts=1
-let g:airline_theme='base16_colors'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16_colors'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = ''
 let g:airline_section_b = '%{getcwd()}'
@@ -196,6 +193,13 @@ let g:airline#extensions#tagbar#flags='s'
 
 " clang_complete setup
 let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
+
+" command-t
+let g:CommandTFileScanner = "git"
+let g:CommandTMaxHeight = 20
+let g:CommandTInputDebounce = 50
+let g:CommandTMinHeight = 20
+let g:CommandTMaxCachedDirectories = 20
 
 " CTags
 set tags+=src/tags,src/TAGS
@@ -245,34 +249,3 @@ endif
 
 set background=dark
 
-"
-" Whitespace
-"
-
-"
-" vim-javacomplete2 setup
-"
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-function SetJavacompleteClasspath()
-    let g:JavaComplete_LibsPath = system('brazil-path build.classpath 2>/dev/null')
-    echo printf("%s", g:JavaComplete_LibsPath);
-endfunction
-
-"
-" end vim-javacomplete2
-"
-
-set background=dark
