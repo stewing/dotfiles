@@ -147,8 +147,10 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
 " Common Command Mappings
 nnoremap <CR> :noh<CR>
-command W w
-command Q q
+cnoremap W w
+cnoremap Q q
+cnoremap Wq wq
+cnoremap WQ wq
 nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
 nnoremap \f :CommandT<cr>
