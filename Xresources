@@ -1,0 +1,34 @@
+
+!! urxvt config
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+
+! URxvt.font: xft:monaco:size=8
+! URxvt*font: xft:Inconsolata:size=12
+
+URxvt.url-launcher: /usr/bin/xdg-open
+
+!! Appearance
+urxvt.termName: rxvt-unicode
+urxvt.scrollBar: false
+urxvt.background: black
+urxvt.foreground: gray
+!! Font prefferenes
+!urxvt.font: xft:DejaVu Sans Mono:pixelsize=13
+!urxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=13:weight=bold
+urxvt.font: xft:Roboto Mono Medium:pixelsize=13
+urxvt.boldFont: xft:Roboto Mono Medium:pixelsize=13
+urxvt.letterSpace: -1
+!! Larger history limit
+urxvt.saveLines: 1000000
+
+!! Perl extensions
+urxvt.perl-ext-common: default,matcher,font-size
+!! Open urls in browser with Control-Click
+urxvt.urlLauncher: /usr/bin/google-chrome-stable
+urxvt.matcher.button: C1
+!! Change font size on Control-Plus/Minus
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+

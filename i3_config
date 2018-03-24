@@ -183,7 +183,7 @@ gaps inner 10
 # start compositor 
 exec_always compton -b
 
-exec /usr/bin/feh --bg-fill /home/ewing/Pictures/horsehead.jpg 
+exec /usr/bin/feh --bg-fill /home/ewing/pics/horsehead_steinberg_big.jpg
 
 # start rofi
 exec /usr/bin/rofi
