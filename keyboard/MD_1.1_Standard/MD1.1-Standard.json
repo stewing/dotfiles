@@ -7,8 +7,12 @@
         "Author": "HaaTa (Jacob Alexander) 2014",
         "KLL": "0.3",
         "Date": "2014-09-14",
-        "Generator": "KIICONF 0.2"
+        "Generator": "KIICONF 0.2",
+        "Variant": ""
     },
+    "defines": [
+
+    ],
     "matrix": [
         {
             "code": "0x00",
@@ -320,8 +324,8 @@
                     "label": "E"
                 },
                 "1": {
-                    "key": "#:ledControl( 3, 15, 0 )",
-                    "label": "LED-"
+                    "key": "CONS:VOLUMEDOWN",
+                    "label": "VOL-"
                 }
             }
         },
@@ -337,8 +341,8 @@
                     "label": "R"
                 },
                 "1": {
-                    "key": "#:ledControl( 4, 15, 0 )",
-                    "label": "LED+"
+                    "key": "CONS:VOLUMEUP",
+                    "label": "VOL+"
                 }
             }
         },
@@ -352,6 +356,10 @@
                 "0": {
                     "key": "T",
                     "label": "T"
+                },
+                "1": {
+                    "key": "#:ledControl( 0, 15 )",
+                    "label": "LED-"
                 }
             }
         },
@@ -365,6 +373,10 @@
                 "0": {
                     "key": "Y",
                     "label": "Y"
+                },
+                "1": {
+                    "key": "#:ledControl( 1, 15 )",
+                    "label": "LED+"
                 }
             }
         },
@@ -391,10 +403,6 @@
                 "0": {
                     "key": "I",
                     "label": "I"
-                },
-                "1": {
-                    "key": "PRINTSCREEN",
-                    "label": "PRSC"
                 }
             }
         },
@@ -408,10 +416,6 @@
                 "0": {
                     "key": "O",
                     "label": "O"
-                },
-                "1": {
-                    "key": "SCROLLLOCK",
-                    "label": "SCLK"
                 }
             }
         },
@@ -498,14 +502,6 @@
                 "0": {
                     "key": "A",
                     "label": "A"
-                },
-                "1": {
-                    "key": "CONS:VOLUMEDOWN",
-                    "label": "VOL-"
-                },
-                "2": {
-                    "key": "#:ledControl( 3, 15, 0 )",
-                    "label": "LED-"
                 }
             }
         },
@@ -519,14 +515,6 @@
                 "0": {
                     "key": "S",
                     "label": "S"
-                },
-                "1": {
-                    "key": "CONS:VOLUMEUP",
-                    "label": "VOL+"
-                },
-                "2": {
-                    "key": "#:ledControl( 4, 15, 0 )",
-                    "label": "LED+"
                 }
             }
         },
@@ -540,14 +528,6 @@
                 "0": {
                     "key": "D",
                     "label": "D"
-                },
-                "1": {
-                    "key": "CONS:MUTE",
-                    "label": "MUTE"
-                },
-                "2": {
-                    "key": "#:ledControl( 5, 0, 0 )",
-                    "label": "LED OFF"
                 }
             }
         },
@@ -563,8 +543,8 @@
                     "label": "F"
                 },
                 "1": {
-                    "key": "CONS:EJECT",
-                    "label": "EJECT"
+                    "key": "CONS:PAUSEPLAY",
+                    "label": "PL\/PS"
                 }
             }
         },
@@ -580,8 +560,8 @@
                     "label": "G"
                 },
                 "1": {
-                    "key": "CONS:STOP",
-                    "label": "STOP"
+                    "key": "CONS:SCANPREVIOUSTRACK",
+                    "label": "PREV"
                 }
             }
         },
@@ -597,8 +577,8 @@
                     "label": "H"
                 },
                 "1": {
-                    "key": "CONS:PAUSEPLAY",
-                    "label": "PL\/PS"
+                    "key": "CONS:SCANNEXTTRACK",
+                    "label": "NEXT"
                 }
             }
         },
@@ -614,8 +594,8 @@
                     "label": "J"
                 },
                 "1": {
-                    "key": "CONS:SCANPREVIOUSTRACK",
-                    "label": "PREV"
+                    "key": "F11",
+                    "label": "F11"
                 }
             }
         },
@@ -631,8 +611,8 @@
                     "label": "K"
                 },
                 "1": {
-                    "key": "CONS:SCANNEXTTRACK",
-                    "label": "NEXT"
+                    "key": "F12",
+                    "label": "F12"
                 }
             }
         },
@@ -792,10 +772,6 @@
                 "0": {
                     "key": "N",
                     "label": "N"
-                },
-                "1": {
-                    "key": "P+",
-                    "label": "P+"
                 }
             }
         },
@@ -809,10 +785,6 @@
                 "0": {
                     "key": "M",
                     "label": "M"
-                },
-                "1": {
-                    "key": "P-",
-                    "label": "P-"
                 }
             }
         },
@@ -826,10 +798,6 @@
                 "0": {
                     "key": "COMMA",
                     "label": ","
-                },
-                "1": {
-                    "key": "END",
-                    "label": "END"
                 }
             }
         },
@@ -843,10 +811,6 @@
                 "0": {
                     "key": "PERIOD",
                     "label": "."
-                },
-                "1": {
-                    "key": "PAGEDOWN",
-                    "label": "PGDN"
                 }
             }
         },
@@ -993,5 +957,14 @@
                 }
             }
         }
-    ]
+    ],
+    "leds": [
+
+    ],
+    "custom": {
+
+    },
+    "animations": {
+
+    }
 }
