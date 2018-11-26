@@ -292,7 +292,3 @@ if [ "$rc" -eq 0 ] ; then
     done
 fi
 
-
-export PATH="/Applications/HPE_Security/Fortify_SCA_and_Apps_17.20/bin:$PATH"
-
-export PATH="/Applications/HPE_Security/Fortify_SCA_and_Apps_17.20/bin:$PATH"
