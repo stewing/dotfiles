@@ -67,9 +67,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-vinegar'
 Plug 'Shougo/denite.nvim'
 
-" Plug 'vim-scripts/a.vim'
-" Plug 'vim-scripts/OmniCppComplete'
-
 " tags
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/ctags.vim'
@@ -79,8 +76,9 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'wellle/targets.vim'
 Plug 'mtth/scratch.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 call plug#end()
 
 " scrolling
@@ -95,6 +93,8 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
+
+nnoremap \f :FZF<cr>
 
 " filetype plugin/syntax
 filetype plugin on
@@ -148,7 +148,6 @@ cnoremap Wq wq
 cnoremap WQ wq
 nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
-nnoremap \f :CtrlP<cr>
 
 " local setup
 if filereadable(expand("~/.vimrc.local"))

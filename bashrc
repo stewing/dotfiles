@@ -293,3 +293,5 @@ if [ "$rc" -eq 0 ] ; then
     done
 fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
