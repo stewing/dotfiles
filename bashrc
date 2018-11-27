@@ -252,6 +252,7 @@ case $- in
         if [ ! -d "$HISTDIR" ] ; then
             mkdir "$HISTDIR"
         fi
+
         PROMPT_COMMAND='[ -d "$HISTDIR" ] || mkdir "$HISTDIR" ; echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log; ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log'
 
         BASE16_SHELL=$HOME/.config/base16-shell/

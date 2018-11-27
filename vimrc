@@ -23,12 +23,6 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-"silent !mkdir /tmp/stewing > /dev/null 2>&1
-"silent !mkdir /tmp/stewing/vim > /dev/null 2>&1
-"silent !mkdir /tmp/stewing/vim/swap/ > /dev/null 2>&1
-"silent !mkdir /tmp/stewing/vim/backup/ > /dev/null 2>&1
-"silent !mkdir $HOME/.vim/files/info/
-
 for dirname in ["/tmp/stewing", "/tmp/stewing/vim", "/tmp/stewing/vim/swap", "/tmp/stewing/vim/backup", $HOME."/.vim/files/info"]
     if !isdirectory(dirname)
         call mkdir(dirname, "p")
@@ -40,55 +34,54 @@ set backupdir=/tmp/stewing/vim/backup/
 set mouse-=a
 set t_ut=
 
-"
-" Vundle setup -- BEGIN
-"
-filetype off
-set runtimepath+=$HOME/.vim/bundle
-set runtimepath+=$HOME/.vim/bundle/Vundle.vim
-" Vundle setup -- MODULES
-call vundle#begin()
-" git-related
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+" ALE
+let g:ale_completion_enabled = 1
 
+" vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+ 
 " airline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " colors
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 
-Plugin 'ervandew/supertab'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'mbbill/undotree'
-Plugin 'mhinz/vim-startify'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-vinegar'
-Plugin 'Shougo/denite.nvim'
+Plug 'ervandew/supertab'
+Plug 'gmarik/Vundle.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-startify'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-vinegar'
+Plug 'Shougo/denite.nvim'
 
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/OmniCppComplete'
+" Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/OmniCppComplete'
+
 " tags
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/ctags.vim'
-Plugin 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/ctags.vim'
+Plug 'vim-scripts/taglist.vim'
 
-Plugin 'wellle/targets.vim'
-" Plugin 'wincent/command-t'
-Plugin 'mtth/scratch.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" completion
-"Plugin 'Rip-Rip/clang_complete'
-call vundle#end()
-"
-" Vundle setup -- END
-"
-
+" misc
+Plug 'chriskempson/base16-vim'
+Plug 'wellle/targets.vim'
+Plug 'mtth/scratch.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'w0rp/ale'
+call plug#end()
 
 " scrolling
 set scrolloff=2
@@ -113,6 +106,7 @@ autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
 " Remember info about open buffers on close
 if has('nvim')
     set viminfo='100,n$HOME/.vim/files/info/shada
@@ -156,16 +150,6 @@ nnoremap ; :
 nnoremap <silent> <buffer> <cr> :nohls<cr>
 nnoremap \f :CtrlP<cr>
 
-"" Command Mode Keys, ironically    
-"cnoremap <C-a> <Home>
-"cnoremap <C-e> <End>
-"cnoremap <C-p> <Up>
-"cnoremap <C-n> <Down>
-"cnoremap <C-b> <Left>
-"cnoremap <C-f> <Right>
-"cnoremap <M-b> <S-Left>
-"cnoremap <M-f> <S-Right>
-
 " local setup
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
@@ -193,9 +177,7 @@ let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent
 "  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
-
-" clang_complete setup
-let g:clang_library_path="/usr/lib/llvm-3.8/lib/libclang.so.1"
+let g:airline#extensions#ale#enabled = 1
 
 " command-t
 " let g:CommandTFileScanner = "git"
@@ -214,24 +196,11 @@ set tags+=src/tags,src/TAGS
 if has("unix")
     let s:uname = system("/usr/bin/uname")
     if s:uname == "Darwin\n" " mac
-        "set guifont=Anonymice\ Powerline:h13
         let g:tagbar_ctags_bin="/usr/local/bin/ctags"
-        " clang_complete setup
-        let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
-
     else " linux, bsd
-
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
         " tagbar setup
         let g:tagbar_ctags_bin="/usr/bin/ctags"
-
-        " clang_complete setup
-        if !empty(glob("/usr/lib/libclang.so.0"))
-            let g:clang_library_path="/usr/lib/libclang.so.0"
-        else
-            let g:clang_complete_loaded=1
-        endif
-
     endif
 endif
 
