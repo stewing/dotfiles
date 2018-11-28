@@ -1,3 +1,4 @@
+scriptencoding=utf-8
 "
 " stewing@outlook.com .vimrc
 "
@@ -11,8 +12,8 @@ set autoread
 set autoindent
 set ruler
 set lazyredraw
-set hid
-set tm=500
+set hidden
+set timeoutlen=500
 set laststatus=2
 set showcmd
 set showmode
@@ -21,11 +22,12 @@ set showmode
 set noerrorbells
 set novisualbell
 set t_vb=
+
 autocmd! GUIEnter * set vb t_vb=
 
-for dirname in ["/tmp/stewing", "/tmp/stewing/vim", "/tmp/stewing/vim/swap", "/tmp/stewing/vim/backup", $HOME."/.vim/files/info"]
+for dirname in ['/tmp/stewing', '/tmp/stewing/vim', '/tmp/stewing/vim/swap', '/tmp/stewing/vim/backup', $HOME.'/.vim/files/info']
     if !isdirectory(dirname)
-        call mkdir(dirname, "p")
+        call mkdir(dirname, 'p')
     endif
 endfor
 
@@ -42,9 +44,6 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_highlights = 0
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 
 " Jedi-vim
@@ -122,7 +121,7 @@ set showmatch
 set incsearch
 set showmatch
 set hlsearch
-set mat=2
+set matchtime=2
 
 nnoremap \f :FZF<cr>
 
@@ -221,14 +220,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 set tags+=src/tags,src/TAGS
 
 " System-specific setttings
-if has("unix")
-    let s:uname = system("/usr/bin/uname")
-    if s:uname == "Darwin\n" " mac
-        let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+if has('unix')
+    let s:uname = system('/usr/bin/uname')
+    if s:uname ==? 'Darwin\n' " mac
+        let g:tagbar_ctags_bin='/usr/local/bin/ctags'
     else " linux, bsd
         set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
         " tagbar setup
-        let g:tagbar_ctags_bin="/usr/bin/ctags"
+        let g:tagbar_ctags_bin='/usr/bin/ctags'
     endif
 endif
 
@@ -245,7 +244,7 @@ if &diff
     " colorscheme solarized
 endif
 
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
