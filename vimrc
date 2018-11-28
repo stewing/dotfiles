@@ -35,7 +35,35 @@ set mouse-=a
 set t_ut=
 
 " ALE
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_highlights = 0
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
+" Jedi-vim
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 1
+
+" Defaults
+" let g:jedi#goto_command = "<leader>d"
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "K"
+" let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<C-Space>"
+" let g:jedi#rename_command = "<leader>r"
+
+" better whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
 
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -48,7 +76,7 @@ call plug#begin('~/.vim/plugged')
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
- 
+
 " airline
 Plug 'bling/vim-airline'
 
@@ -78,6 +106,8 @@ Plug 'wellle/targets.vim'
 Plug 'mtth/scratch.vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'davidhalter/jedi-vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -120,13 +150,13 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set listchars=trail:¡,precedes:«,extends:»,eol:↩,nbsp:↔,tab:●○
-" examples: 
+" examples:
 " precedes:
 " extends
-" tail:     
+" tail:
 " eol:
-" nbsp:  
-: tab:  	
+" nbsp:
+: tab:
 "set listchars=trail:⏘,precedes:👈,extends:👉,eol:👇,tab:👊\
 
 " language-specific settings
@@ -176,7 +206,6 @@ let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent
 "  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
-let g:airline#extensions#ale#enabled = 1
 
 " command-t
 " let g:CommandTFileScanner = "git"
