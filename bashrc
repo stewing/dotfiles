@@ -19,7 +19,7 @@ alias hex='printf "0x%08x\n"'
 alias dec='printf "%d\n"'
 alias bin="perl -e 'printf(\"%b\n\", shift());'"
 
-# 
+#
 # Spaces, text, etc.
 #
 alias noblanks="sed '/^\s*$/d'"
@@ -158,7 +158,7 @@ function colors_dark
 }
 
 # cdexec (PROMPT_COMMAND)
-function cdexec
+function __cdexec
 {
     if [ -x .cdexec ] ; then
         file=`realpath .cdexec`
@@ -167,6 +167,54 @@ function cdexec
             [ `stat -c %U $file` == $USER ]  ; then
             . .cdexec
         fi
+    fi
+}
+
+function __write_history
+{
+    LAST_EXIT_STATUS=$?
+    [ -d "$HISTDIR" ] || mkdir "$HISTDIR"
+    echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log
+    ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log
+}
+
+function __set_vars
+{
+    GIT_BRANCH=""
+    GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+    ABBREV_DIRS=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")
+}
+
+function __set_it2_tb
+{
+    IT2TB="$HOME/.iterm2/it2setkeylabel"
+    if [ -x $IT2TB ] ; then
+        if [ -z "$GIT_BRANCH" ] ; then
+            TB_GIT_BRANCH=""
+        else
+            TB_GIT_BRANCH="⌥ $GIT_BRANCH"
+        fi
+
+        if [ ${#PWD} -gt 40 ] ; then
+            TB_CWD="🧭 $ABBREV_DIRS"
+        else
+            TB_CWD="🧭 $PWD"
+        fi
+
+        if [ "$LAST_EXIT_STATUS" == "0" ] ; then
+            TB_LAST=""
+        else
+            TB_LAST="(╯°□°）╯︵ ┻━┻"
+            #TB_LAST="ಠ__ಠ"
+        fi
+
+        if [ $(date +"%H") -gt 12 ]; then
+            TB_BEV="🍺"
+        else
+            TB_BEV="☕️"
+        fi
+
+        $IT2TB set status "$TB_BEV   $TB_GIT_BRANCH   $TB_CWD    $TB_LAST"
     fi
 }
 
@@ -189,6 +237,16 @@ HISTTIMEFORMAT="%Y-%m-%d-%T "
 HISTSIZE=5000
 HISTDIR="$HOME/.history"
 
+function ht
+{
+    sval="$1"
+    if [ -z "$sval" ] ; then
+        echo "need regex to search"
+        return 1
+    fi
+    grep --no-filename "$sval" "$HISTDIR/today.log" | cut -d' ' -f7- | sort | uniq
+}
+
 function hs
 {
     sval="$1"
@@ -196,7 +254,7 @@ function hs
         echo "need regex to search"
         return 1
     fi
-    grep --no-filename $sval "$HISTDIR/"* | cut -d' ' -f7- | sort | uniq
+    grep --no-filename "$sval" "$HISTDIR/"* | cut -d' ' -f7- | sort | uniq
 }
 
 # P4
@@ -239,6 +297,7 @@ case $- in
             Darwin)
                 PATH=$PATH:/usr/local/bin/
                 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
+                export CLICOLOR=1
                 # DYLD_FALLBACK_LIBRARY_PATH=
                 ;;
             FreeBSD)
@@ -253,7 +312,7 @@ case $- in
             mkdir "$HISTDIR"
         fi
 
-        PROMPT_COMMAND='[ -d "$HISTDIR" ] || mkdir "$HISTDIR" ; echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log; ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log'
+        PROMPT_COMMAND="__write_history; __set_vars; __set_it2_tb"
 
         BASE16_SHELL=$HOME/.config/base16-shell/
         [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -262,7 +321,7 @@ case $- in
     ;;
 esac
 
-export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
+export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR ABBREV_DIRS GIT_EDITOR GIT_BRANCH PROMPT_COMMAND MAKEFLAGS LAST_EXIT_STATUS
 
 # functions
 function prefix {
@@ -295,3 +354,6 @@ fi
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+

@@ -37,9 +37,9 @@ set mouse-=a
 set t_ut=
 
 " ALE
-" let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enabled = 1
-
+let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -105,7 +105,7 @@ Plug 'wellle/targets.vim'
 Plug 'mtth/scratch.vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
@@ -218,6 +218,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 " CTags
 set tags+=src/tags,src/TAGS
+
+" filetype-specific setttings
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " System-specific setttings
 if has('unix')
