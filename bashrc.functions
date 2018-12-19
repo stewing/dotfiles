@@ -1,0 +1,219 @@
+
+
+OS=`uname -s`
+
+export OS
+
+# functions
+strlen()
+{
+    str=$1
+    echo ${#str}
+}
+
+rand_str()
+{
+    local len=$1
+    if [ -z "$len" ] ; then
+        len=10
+    fi
+    cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c $len
+}
+
+prefix()
+{
+    sed -e "s/^/$1: /"
+}
+
+rand_no()
+{
+    local ceil=10
+    if [ ! -z $1 ] ; then
+        ceil=$1
+    fi
+    local myrand=$(($RANDOM % $ceil))
+    printf "%d\n" $myrand
+    return $myrand
+}
+
+
+# ascii conversion array
+
+ascii_array=(nul soh stx etx eot enq ack bel bs  ht  nl  vt  np  cr  so  si dle dc1 dc2 dc3 dc4 nak syn etb can em sub esc fs gs rs us sp \! \" \# \$ \% \& \' \( \) \* + , - . / 0 1 2 3 4 5 6 7 8 9 : \; \< = \> ?  @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z \[ \\ \] ^ _ \` a b c d e f g h i j k l m n o p q r s t u v w x y z \{ \| \} ~ del)
+
+itoa()
+{
+    echo ${ascii_array[$1]}
+}
+
+k()
+{
+    echo "$1*1024" | bc
+}
+
+m()
+{
+    echo "$1*1024^2" | bc
+}
+
+g()
+{
+    echo "$1*1024^3" | bc
+}
+
+export -f itoa rand_str strlen rand_no k m g
+
+epochtime()
+{
+    if [ -t 0 ] ; then
+        seconds="$1"
+    else
+        seconds=$(cat)
+    fi
+    if [ -z "$seconds" ] ; then
+        echo "Usage: $0 <epoch_seconds>"
+        echo "       echo <epoch_seconds> | $0"
+        return 1
+    fi
+    case "$OS" in
+        Darwin)
+            date -r "$seconds"
+            ;;
+        Linux)
+            date --date "@$seconds" --utc
+            ;;
+        *)
+            echo "Unknown OS: \"$OS\""
+            ;;
+    esac
+}
+
+now()
+{
+    if [ $# -gt 0 ] ; then
+        ARGS=$@
+        date -u +"%Y-%m-%dT%TZ" -d "$ARGS"
+    else
+        date -u +"%Y-%m-%dT%TZ"
+    fi
+}
+
+export -f epochtime now
+
+grepN()
+{
+    lines=$1
+    if [ -z "$2" ] ; then
+        echo "Need a pattern"
+        return 1
+    fi
+    pattern="$2"
+    (head -n$lines ; tail -n +$lines | grep $pattern)
+}
+
+grep1()
+{
+    grepN 1 "$@"
+}
+
+grep2()
+{
+    grepN 2 "$@"
+}
+
+grep3()
+{
+    grepN 3 "$@"
+}
+
+grep4()
+{
+    grepN 4 "$@"
+}
+
+export -f grep{1..4}
+
+# cdexec (PROMPT_COMMAND)
+__cdexec()
+{
+    if [ -x .cdexec ] ; then
+        file=`realpath .cdexec`
+        if [ `stat -c %A $file | cut -c6` == "-" ] && \
+            [ `stat -c %A $file | cut -c9` == "-" ] && \
+            [ `stat -c %U $file` == $USER ]  ; then
+            . .cdexec
+        fi
+    fi
+}
+
+ht()
+{
+    sval="$1"
+    if [ -z "$sval" ] ; then
+        echo "need regex to search"
+        return 1
+    fi
+    grep --no-filename "$sval" "$HISTDIR/today.log" | cut -d' ' -f7- | sort | uniq
+}
+
+hs()
+{
+    sval="$1"
+    if [ -z "$sval" ] ; then
+        echo "need regex to search"
+        return 1
+    fi
+    grep --no-filename "$sval" "$HISTDIR/"* | cut -d' ' -f7- | sort | uniq
+}
+
+# PROMPT_COMMAND helpers
+__write_history()
+{
+    LAST_EXIT_STATUS=$?
+    [ -d "$HISTDIR" ] || mkdir "$HISTDIR"
+    echo "$(hostname -s) $(pwd) $(history 1)" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log
+    ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log
+}
+
+__set_vars()
+{
+    GIT_BRANCH=""
+    GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+    ABBREV_DIRS=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")
+}
+
+__set_it2_tb()
+{
+    IT2TB="$HOME/.iterm2/it2setkeylabel"
+    if [ -x $IT2TB ] ; then
+        if [ -z "$GIT_BRANCH" ] ; then
+            TB_GIT_BRANCH=""
+        else
+            TB_GIT_BRANCH="⌥ $GIT_BRANCH"
+        fi
+
+        if [ ${#PWD} -gt 40 ] ; then
+            TB_CWD="🧭 $ABBREV_DIRS"
+        else
+            TB_CWD="🧭 $PWD"
+        fi
+
+        if [ "$LAST_EXIT_STATUS" == "0" ] ; then
+            TB_LAST=""
+        else
+            TB_LAST="(╯°□°）╯︵ ┻━┻"
+            #TB_LAST="ಠ__ಠ"
+        fi
+
+        if [ $(date +"%H") -gt 12 ]; then
+            TB_BEV="🍺"
+        else
+            TB_BEV="☕️"
+        fi
+
+        $IT2TB set status "$TB_BEV   $TB_GIT_BRANCH   $TB_CWD    $TB_LAST"
+    fi
+}
+
+export ABBREV_DIRS LAST_EXIT_STATUS
+export -f __write_history __set_vars __set_it2_tb
