@@ -9,7 +9,7 @@ shopt -s extglob
 
 #
 # read our functions
-source ~/.bashrc.functions
+source ~/.bash.functions
 
 #
 # path utilities

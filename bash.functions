@@ -1,4 +1,4 @@
-
+# vi: ft=sh
 
 OS=`uname -s`
 
@@ -217,3 +217,16 @@ __set_it2_tb()
 
 export ABBREV_DIRS LAST_EXIT_STATUS
 export -f __write_history __set_vars __set_it2_tb
+
+# Kubernetes
+
+pod()
+{
+    kubectl get pod -l app=test_manager_app -o jsonpath --template={.items[0].metadata.name}
+}
+
+function rename_gui_title {
+    echo -ne "\033]0;"$@"\007"
+}
+
+
