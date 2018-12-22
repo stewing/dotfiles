@@ -1,4 +1,5 @@
 Name = "MD1.1";
+Variant = "standard";
 Layout = "Standard";
 Base = "StandardBlank";
 Version = "0.2";
@@ -6,7 +7,6 @@ Author = "HaaTa (Jacob Alexander) 2014";
 KLL = "0.3";
 Date = "2014-09-14";
 Generator = "KIICONF 0.2";
-Variant = "";
 
 U"1" : U"F1";
 U"2" : U"F2";
@@ -21,23 +21,16 @@ U"0" : U"F10";
 U"MINUS" : U"F11";
 U"EQUAL" : U"F12";
 U"BACKSLASH" : U"INSERT";
-U"Q" : CONS"BRIGHTNESSDECREMENT";
-U"W" : CONS"BRIGHTNESSINCREMENT";
-U"E" : CONS"VOLUMEDOWN";
-U"R" : CONS"VOLUMEUP";
-U"T" : ledControl( 0, 15 );
-U"Y" : ledControl( 1, 15 );
+U"BACKTICK" : U"DELETE";
 U"P" : U"UP";
-U"BACKSPACE" : U"DELETE";
-U"F" : CONS"PAUSEPLAY";
-U"G" : CONS"SCANPREVIOUSTRACK";
-U"H" : CONS"SCANNEXTTRACK";
+U"A" : CONS"VOLUMEDOWN";
+U"S" : CONS"VOLUMEUP";
+U"D" : CONS"PAUSEPLAY";
 U"J" : U"F11";
 U"K" : U"F12";
 U"L" : U"LEFT";
 U"SEMICOLON" : U"DOWN";
 U"QUOTE" : U"RIGHT";
-U"C" : CONS"CALCULATOR";
 
 
 

@@ -1,4 +1,5 @@
 Name = "MD1.1";
+Variant = "standard";
 Layout = "Standard";
 Base = "StandardBlank";
 Version = "0.2";
@@ -6,7 +7,6 @@ Author = "HaaTa (Jacob Alexander) 2014";
 KLL = "0.3";
 Date = "2014-09-14";
 Generator = "KIICONF 0.2";
-Variant = "";
 
 
 
@@ -64,17 +64,19 @@ U"COMMA" : U"COMMA";
 U"PERIOD" : U"PERIOD";
 U"SLASH" : U"SLASH";
 U"RSHIFT" : U"RSHIFT";
-U"FUNCTION1" : U"FUN3";
+U"FUNCTION1" : U"FUNCTION1";
 U"FUNCTION2" : U"FUN1";
-U"LALT" : U"LALT";
-U"LGUI" : U"LGUI";
+U"LALT" : U"LGUI";
+U"LGUI" : U"LALT";
 U"SPACE" : U"SPACE";
-U"RGUI" : U"RGUI";
-U"RALT" : U"RALT";
+U"RGUI" : U"RALT";
+U"RALT" : U"RGUI";
 U"FUNCTION3" : U"FUN2";
 U"FUNCTION4" : U"FUN1";
 
 
 
+A[all_on] <= start, pfunc:interp;
+A[all_on, 1] <= P[c:0%](255), P[c:100%](255);
 
 

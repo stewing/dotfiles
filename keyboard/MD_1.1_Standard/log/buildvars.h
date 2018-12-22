@@ -39,21 +39,21 @@
 
 
 // Strings used in the CLI module
-#define CLI_Revision            "3d12be5727b2d68b66faa5c81c9ddbaf339dfda4"
-#define CLI_RevisionNumber      809
-#define CLI_RevisionNumberStr   "809"
-#define CLI_Version             "untagged-dd071079752b87a7a820"
-#define CLI_VersionRevision     "929a788d122e8ab984edecae9c22b882b95550a0"
-#define CLI_VersionRevNumber    706
-#define CLI_VersionRevNumberStr "706"
+#define CLI_Revision            "f6d83f269246c937e2aede63d7f763f2c2b37483"
+#define CLI_RevisionNumber      853
+#define CLI_RevisionNumberStr   "853"
+#define CLI_Version             "0.4.9"
+#define CLI_VersionRevision     "2dd024f4a88ea3c53d1d3eac7e6dadcef3f04769"
+#define CLI_VersionRevNumber    723
+#define CLI_VersionRevNumberStr "723"
 #define CLI_Branch              "master"
 #define CLI_ModifiedStatus      "Clean"
 #define CLI_ModifiedFiles       "\r\n\t"
 #define CLI_RepoOrigin          "https://github.com/kiibohd/controller.git"
-#define CLI_CommitDate          "2018-02-20 00:38:06 -0800"
-#define CLI_CommitAuthor        "Jacob Alexander <haata@kiibohd.com>"
+#define CLI_CommitDate          "2018-04-12 14:49:12 -0700"
+#define CLI_CommitAuthor        "GitHub <noreply@github.com>"
 #define CLI_Modules             "Scan(Infinity_60_LED:alphabet) Macro(PixelMap) Output(USB) Debug(full)"
-#define CLI_BuildDate           "2018-02-24 02:55:30 +0000"
+#define CLI_BuildDate           "2018-12-22 00:11:43 +0000"
 #define CLI_BuildOS             "Ubuntu 14.04.5 LTS trusty"
 #define CLI_BuildCompiler       "/usr/bin/arm-none-eabi-gcc "
 #define CLI_Arch                "arm"
@@ -69,5 +69,5 @@
 // match the INF file.
 #define VENDOR_ID               0x1C11
 #define PRODUCT_ID              0xB04D
-#define BCD_VERSION             809
+#define BCD_VERSION             853
 

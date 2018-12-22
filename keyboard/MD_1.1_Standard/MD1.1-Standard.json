@@ -1,14 +1,14 @@
 {
     "header": {
         "Name": "MD1.1",
+        "Variant": "standard",
         "Layout": "Standard",
         "Base": "StandardBlank",
         "Version": "0.2",
         "Author": "HaaTa (Jacob Alexander) 2014",
         "KLL": "0.3",
         "Date": "2014-09-14",
-        "Generator": "KIICONF 0.2",
-        "Variant": ""
+        "Generator": "KIICONF 0.2"
     },
     "defines": [
 
@@ -258,6 +258,10 @@
                 "0": {
                     "key": "BACKTICK",
                     "label": "`"
+                },
+                "1": {
+                    "key": "DELETE",
+                    "label": "DEL"
                 }
             }
         },
@@ -284,10 +288,6 @@
                 "0": {
                     "key": "Q",
                     "label": "Q"
-                },
-                "1": {
-                    "key": "CONS:BRIGHTNESSDECREMENT",
-                    "label": "SCRN-"
                 }
             }
         },
@@ -301,10 +301,6 @@
                 "0": {
                     "key": "W",
                     "label": "W"
-                },
-                "1": {
-                    "key": "CONS:BRIGHTNESSINCREMENT",
-                    "label": "SCRN+"
                 },
                 "2": {
                     "key": "#:flashMode()",
@@ -322,10 +318,6 @@
                 "0": {
                     "key": "E",
                     "label": "E"
-                },
-                "1": {
-                    "key": "CONS:VOLUMEDOWN",
-                    "label": "VOL-"
                 }
             }
         },
@@ -339,10 +331,6 @@
                 "0": {
                     "key": "R",
                     "label": "R"
-                },
-                "1": {
-                    "key": "CONS:VOLUMEUP",
-                    "label": "VOL+"
                 }
             }
         },
@@ -356,10 +344,6 @@
                 "0": {
                     "key": "T",
                     "label": "T"
-                },
-                "1": {
-                    "key": "#:ledControl( 0, 15 )",
-                    "label": "LED-"
                 }
             }
         },
@@ -373,10 +357,6 @@
                 "0": {
                     "key": "Y",
                     "label": "Y"
-                },
-                "1": {
-                    "key": "#:ledControl( 1, 15 )",
-                    "label": "LED+"
                 }
             }
         },
@@ -472,10 +452,6 @@
                 "0": {
                     "key": "BACKSPACE",
                     "label": "BKSP"
-                },
-                "1": {
-                    "key": "DELETE",
-                    "label": "DEL"
                 }
             }
         },
@@ -502,6 +478,14 @@
                 "0": {
                     "key": "A",
                     "label": "A"
+                },
+                "1": {
+                    "key": "CONS:VOLUMEDOWN",
+                    "label": "VOL-"
+                },
+                "2": {
+                    "key": "#:ledControl( 0, 15 )",
+                    "label": "LED-"
                 }
             }
         },
@@ -515,6 +499,14 @@
                 "0": {
                     "key": "S",
                     "label": "S"
+                },
+                "1": {
+                    "key": "CONS:VOLUMEUP",
+                    "label": "VOL+"
+                },
+                "2": {
+                    "key": "#:ledControl( 1, 15 )",
+                    "label": "LED+"
                 }
             }
         },
@@ -528,6 +520,14 @@
                 "0": {
                     "key": "D",
                     "label": "D"
+                },
+                "1": {
+                    "key": "CONS:PAUSEPLAY",
+                    "label": "PL\/PS"
+                },
+                "2": {
+                    "key": "#:ledControl( 5, 255 )",
+                    "label": "LED TOG"
                 }
             }
         },
@@ -541,10 +541,6 @@
                 "0": {
                     "key": "F",
                     "label": "F"
-                },
-                "1": {
-                    "key": "CONS:PAUSEPLAY",
-                    "label": "PL\/PS"
                 }
             }
         },
@@ -558,10 +554,6 @@
                 "0": {
                     "key": "G",
                     "label": "G"
-                },
-                "1": {
-                    "key": "CONS:SCANPREVIOUSTRACK",
-                    "label": "PREV"
                 }
             }
         },
@@ -575,10 +567,6 @@
                 "0": {
                     "key": "H",
                     "label": "H"
-                },
-                "1": {
-                    "key": "CONS:SCANNEXTTRACK",
-                    "label": "NEXT"
                 }
             }
         },
@@ -729,10 +717,6 @@
                 "0": {
                     "key": "C",
                     "label": "C"
-                },
-                "1": {
-                    "key": "CONS:CALCULATOR",
-                    "label": "CALC"
                 }
             }
         },
@@ -848,8 +832,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "FUN3",
-                    "label": "\u01923"
+                    "key": "FUNCTION1",
+                    "label": "\u01921"
                 }
             }
         },
@@ -874,8 +858,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "LALT",
-                    "label": "LALT"
+                    "key": "LGUI",
+                    "label": "LGUI"
                 }
             }
         },
@@ -887,8 +871,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "LGUI",
-                    "label": "LGUI"
+                    "key": "LALT",
+                    "label": "LALT"
                 }
             }
         },
@@ -913,8 +897,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "RGUI",
-                    "label": "RGUI"
+                    "key": "RALT",
+                    "label": "RALT"
                 }
             }
         },
@@ -926,8 +910,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "RALT",
-                    "label": "RALT"
+                    "key": "RGUI",
+                    "label": "RGUI"
                 }
             }
         },
@@ -965,6 +949,11 @@
 
     },
     "animations": {
-
+        "all_on": {
+            "settings": "start, pfunc:interp",
+            "frames": [
+                "P[c:0%](255), P[c:100%](255)"
+            ]
+        }
     }
 }
