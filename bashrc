@@ -85,6 +85,16 @@ case $- in
                 ;;
             Darwin)
                 PATH=$PATH:/usr/local/bin/
+
+                # homebrew stuff
+                if [ ! -x /usr/local/bin/brew ] ; then
+                    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                fi
+
+                if [ -x /usr/local/bin/brew ] ; then
+                    PATH=$PATH:"$(brew --prefix)"/bin
+                fi
+
                 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist &> /dev/null
                 export CLICOLOR=1
                 ;;
