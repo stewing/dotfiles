@@ -258,10 +258,6 @@
                 "0": {
                     "key": "BACKTICK",
                     "label": "`"
-                },
-                "1": {
-                    "key": "DELETE",
-                    "label": "DEL"
                 }
             }
         },
@@ -452,6 +448,10 @@
                 "0": {
                     "key": "BACKSPACE",
                     "label": "BKSP"
+                },
+                "1": {
+                    "key": "DELETE",
+                    "label": "DEL"
                 }
             }
         },

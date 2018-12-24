@@ -63,6 +63,10 @@ let g:jedi#auto_vim_configuration = 1
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
+" misc plugin stuff
+let g:rainbow_active=1
+let g:vim_search_pulse_duration=200
+hi link illuminatedWord Visual
 
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -105,6 +109,11 @@ Plug 'wellle/targets.vim'
 Plug 'mtth/scratch.vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug 'inside/vim-search-pulse'
+Plug 'RRethy/vim-illuminate'
+Plug 'luochen1990/rainbow'
+
 " Plug 'davidhalter/jedi-vim'
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -205,16 +214,6 @@ let g:airline_section_z = '[0x%02.B] %3p%% %{g:airline_symbols.linenr}%#__accent
 "  plugins
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#tagbar#flags='s'
-
-" command-t
-" let g:CommandTFileScanner = "git"
-" let g:CommandTMaxHeight = 20
-" let g:CommandTInputDebounce = 50
-" let g:CommandTMinHeight = 20
-" let g:CommandTMaxCachedDirectories = 20
-
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " CTags
 set tags+=src/tags,src/TAGS

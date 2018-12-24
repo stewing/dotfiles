@@ -1980,25 +1980,6 @@
                     ]
                 ]
             },
-            ":0 S015": {
-                "kll": "S0x00f : U0x04c;",
-                "result": [
-                    [
-                        {
-                            "type": "USBCode",
-                            "uid": 76
-                        }
-                    ]
-                ],
-                "trigger": [
-                    [
-                        {
-                            "type": "ScanCode",
-                            "uid": 15
-                        }
-                    ]
-                ]
-            },
             ":0 S026": {
                 "kll": "S0x01a : U0x052;",
                 "result": [
@@ -2014,6 +1995,25 @@
                         {
                             "type": "ScanCode",
                             "uid": 26
+                        }
+                    ]
+                ]
+            },
+            ":0 S029": {
+                "kll": "S0x01d : U0x04c;",
+                "result": [
+                    [
+                        {
+                            "type": "USBCode",
+                            "uid": 76
+                        }
+                    ]
+                ],
+                "trigger": [
+                    [
+                        {
+                            "type": "ScanCode",
+                            "uid": 29
                         }
                     ]
                 ]

@@ -53,7 +53,7 @@
 #define CLI_CommitDate          "2018-04-12 14:49:12 -0700"
 #define CLI_CommitAuthor        "GitHub <noreply@github.com>"
 #define CLI_Modules             "Scan(Infinity_60_LED:alphabet) Macro(PixelMap) Output(USB) Debug(full)"
-#define CLI_BuildDate           "2018-12-22 00:11:43 +0000"
+#define CLI_BuildDate           "2018-12-24 16:57:47 +0000"
 #define CLI_BuildOS             "Ubuntu 14.04.5 LTS trusty"
 #define CLI_BuildCompiler       "/usr/bin/arm-none-eabi-gcc "
 #define CLI_Arch                "arm"
