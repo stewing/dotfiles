@@ -97,6 +97,7 @@ Plug 'scrooloose/nerdtree'
 " misc
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'BurntSushi/ripgrep'
+Plug 'wellle/targets.vim'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
