@@ -17,6 +17,7 @@ set timeoutlen=500
 set laststatus=2
 set showcmd
 set showmode
+set t_Co=256
 
 " disable bells
 set noerrorbells
@@ -37,7 +38,7 @@ set mouse-=a
 set t_ut=
 
 " ALE
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -49,7 +50,7 @@ let g:ale_set_highlights = 0
 " Jedi-vim
 let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 1
-
+let g:jedi#use_splits_not_buffers = "left"
 " Defaults
 " let g:jedi#goto_command = "<leader>d"
 " let g:jedi#goto_assignments_command = "<leader>g"
@@ -80,42 +81,33 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" airline
-Plug 'bling/vim-airline'
-
-" colors
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
-
-Plug 'ervandew/supertab'
-Plug 'gmarik/Vundle.vim'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'mbbill/undotree'
+" misc
 Plug 'mhinz/vim-startify'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-vinegar'
-Plug 'Shougo/denite.nvim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'ntpeters/vim-better-whitespace'
 
-" tags
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/ctags.vim'
-Plug 'vim-scripts/taglist.vim'
+" color
+Plug 'chriskempson/base16-vim'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 
 " misc
-Plug 'chriskempson/base16-vim'
-Plug 'wellle/targets.vim'
-Plug 'mtth/scratch.vim'
-Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'BurntSushi/ripgrep'
+
+" tags
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 Plug 'inside/vim-search-pulse'
 Plug 'RRethy/vim-illuminate'
-Plug 'luochen1990/rainbow'
 
-" Plug 'davidhalter/jedi-vim'
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'w0rp/ale'
+Plug 'davidhalter/jedi-vim'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 

@@ -38,7 +38,7 @@ alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (
 # time
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
-alias timestamp="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+alias ts="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
 
 # weather
 alias weather="curl -s wttr.in/Pittsburgh"
@@ -51,8 +51,7 @@ alias jpp="python -mjson.tool"
 # settings
 EDITOR=vim
 GIT_EDITOR=$EDITOR
-# PS1="\h % "
-PS1="\\033[38;5;73m\h % \\033[0m"
+PS1="\h % "
 PAGER="less"
 FIGNORE=".o:~"
 MAKEFLAGS="-j 4"

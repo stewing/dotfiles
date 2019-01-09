@@ -36,6 +36,10 @@ rand_no()
     return $myrand
 }
 
+branches()
+{
+    git for-each-ref --format='%(committerdate)	%(authorname)	%(refname)' | sort -k5n -k2M -k3n -k4n | column -t -s'	'
+}
 
 # ascii conversion array
 
