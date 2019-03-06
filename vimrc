@@ -106,7 +106,7 @@ Plug 'majutsushi/tagbar'
 Plug 'inside/vim-search-pulse'
 Plug 'RRethy/vim-illuminate'
 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'sheerun/vim-polyglot'
 
