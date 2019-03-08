@@ -224,8 +224,22 @@ export -f __write_history __set_vars __set_it2_tb
 
 # Kubernetes
 
-function rename_gui_title {
+rename_gui_title() {
     echo -ne "\033]0;"$@"\007"
 }
 
+# AWS
 
+get_aws_creds() {
+    echo "AWS_DEFAULT_PROFILE: $AWS_DEFAULT_PROFILE"
+    echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
+    echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
+    echo "AWS_SESSION_TOKEN: $AWS_SESSION_TOKEN"
+}
+
+clear_aws_creds() {
+    unset $AWS_DEFAULT_PROFILE
+    unset $AWS_ACCESS_KEY_ID
+    unset $AWS_SECRET_ACCESS_KEY
+    unset $AWS_SESSION_TOKEN
+}
