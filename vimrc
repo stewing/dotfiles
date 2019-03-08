@@ -38,13 +38,13 @@ set mouse-=a
 set t_ut=
 
 " ALE
-let g:ale_completion_enabled = 0
-let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_column_always = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_highlights = 0
+"let g:ale_completion_enabled = 0
+"let g:airline#extensions#ale#enabled = 1
+"let g:ale_sign_column_always = 1
+"let g:ale_echo_msg_error_str = 'E'
+"let g:ale_echo_msg_warning_str = 'W'
+"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"let g:ale_set_highlights = 0
 
 
 " Jedi-vim
@@ -63,6 +63,7 @@ let g:jedi#use_splits_not_buffers = "left"
 " better whitespace
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
 
 " misc plugin stuff
 let g:rainbow_active=1
@@ -87,17 +88,17 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ntpeters/vim-better-whitespace'
 
 " color
-Plug 'chriskempson/base16-vim'
+Plug 'danielwe/base16-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
-" misc
+" Fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'BurntSushi/ripgrep'
-Plug 'wellle/targets.vim'
+Plug 'junegunn/fzf.vim'
+"Plug 'BurntSushi/ripgrep'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -106,7 +107,7 @@ Plug 'majutsushi/tagbar'
 Plug 'inside/vim-search-pulse'
 Plug 'RRethy/vim-illuminate'
 
-" Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'sheerun/vim-polyglot'
 
@@ -125,7 +126,9 @@ set showmatch
 set hlsearch
 set matchtime=2
 
+" FZF
 nnoremap \f :FZF<cr>
+nnoremap \t :Tags<cr>
 
 " filetype plugin/syntax
 filetype plugin on
@@ -173,8 +176,6 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.gifv
 
 " Common Command Mappings
 nnoremap <CR> :noh<CR>
-cnoremap W w
-cnoremap Q q
 cnoremap Wq wq
 cnoremap WQ wq
 nnoremap ; :
@@ -211,8 +212,10 @@ let g:airline#extensions#tagbar#flags='s'
 " CTags
 set tags+=src/tags,src/TAGS
 
-" filetype-specific setttings
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" autocmds for certain files
+autocmd FileType yaml   setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
+autocmd BufEnter *.yml.template  setlocal filetype=yaml
 
 " System-specific setttings
 if has('unix')
@@ -220,14 +223,14 @@ if has('unix')
     if s:uname ==? 'Darwin\n' " mac
         let g:tagbar_ctags_bin='/usr/local/bin/ctags'
     else " linux, bsd
-        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
         " tagbar setup
         let g:tagbar_ctags_bin='/usr/bin/ctags'
     endif
 endif
 
 if has('gui_running')
-    colorscheme Tomorrow-Night
+    colorscheme base16-tomorrow-night
+    set guifont=MonoidNerdFontComplete-Regular:h12
     set clipboard=unnamed
 else
     set background=dark
