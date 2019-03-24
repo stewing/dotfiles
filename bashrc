@@ -135,7 +135,14 @@ if [ "$rc" -eq 0 ] ; then
     done
 fi
 
+# FZF and settings related to it
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+bind "$(bind -s | grep '^"\\ec"' | sed 's/ec/C-q/')"
+[[ $- =~ i ]] && bind '"\ec": nop'
 
+complete -F _fzf_path_completion -o default -o bashdefault ag vim
+complete -F _fzf_dir_completion -o default -o bashdefault tree
+
+# iTerm2 stuff
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
