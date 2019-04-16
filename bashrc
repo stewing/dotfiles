@@ -51,8 +51,7 @@ alias jpp="python -mjson.tool"
 # settings
 EDITOR=vim
 GIT_EDITOR=$EDITOR
-PS1='\[\e[1m\]\033[38;5;73m\h % \033[0m\[\e[0m\]'
-# PS1="\h % "
+PS1="\h % "
 PAGER="less"
 FIGNORE=".o:~"
 MAKEFLAGS="-j 4"
