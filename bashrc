@@ -136,8 +136,13 @@ fi
 
 # FZF and settings related to it
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Remove esc-c, chagne to esc-q
 bind "$(bind -s | grep '^"\\ec"' | sed 's/ec/C-q/')"
 [[ $- =~ i ]] && bind '"\ec": nop'
+
+# Fix crap binding for CTRL-T
+bind '"\C-t": transpose-chars'
 
 complete -F _fzf_path_completion -o default -o bashdefault ag vim
 complete -F _fzf_dir_completion -o default -o bashdefault tree
