@@ -247,5 +247,8 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
+" Background
 set background=dark
+hi NonText ctermbg=none
+hi Normal guibg=NONE ctermbg=NONE
 
