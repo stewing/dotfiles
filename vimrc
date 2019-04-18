@@ -104,12 +104,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
-Plug 'inside/vim-search-pulse'
+" Plug 'inside/vim-search-pulse' " slow
 Plug 'RRethy/vim-illuminate'
 
 "Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot' " slow
 
 call plug#end()
 
