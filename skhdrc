@@ -105,7 +105,7 @@
 ]
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+cmd - return : osascript -e 'tell application "iTerm2"' -e 'create window with default profile' -e 'end tell'
 
 # open qutebrowser
 cmd + shift - return : ~/Scripts/qtb.sh
@@ -144,10 +144,11 @@ shift + cmd - l : chunkc tiling::window --warp east
 shift + alt - up     : chunkc tiling::window --grid-layout 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-shift + alt - left   : chunkc tiling::window --grid-layout 1:2:0:0:1:1
+
+#shift + alt - left   : chunkc tiling::window --grid-layout 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-shift + alt - right  : chunkc tiling::window --grid-layout 1:2:1:0:1:1
+#shift + alt - right  : chunkc tiling::window --grid-layout 1:2:1:0:1:1
 
 # create desktop, move window and follow focus
 shift + cmd - n : chunkc tiling::desktop --create;\
@@ -178,19 +179,19 @@ cmd + alt - 9 : chunkc tiling::desktop --focus 9
 cmd + alt - 0 : chunkc tiling::desktop --focus 10
 
 # send window to desktop and follow focus
-shift + cmd - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
-shift + cmd - z : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop --focus prev
-shift + cmd - c : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
-shift + cmd - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
-shift + cmd - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
-shift + cmd - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
-shift + cmd - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
-shift + cmd - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
-shift + cmd - 6 : chunkc tiling::window --send-to-desktop 6; chunkc tiling::desktop --focus 6
-shift + cmd - 7 : chunkc tiling::window --send-to-desktop 7; chunkc tiling::desktop --focus 7
-shift + cmd - 8 : chunkc tiling::window --send-to-desktop 8; chunkc tiling::desktop --focus 8
-shift + cmd - 9 : chunkc tiling::window --send-to-desktop 9; chunkc tiling::desktop --focus 9
-shift + cmd - 0 : chunkc tiling::window --send-to-desktop 10; chunkc tiling::desktop --focus 10
+# shift + cmd - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
+# shift + cmd - z : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop --focus prev
+# shift + cmd - c : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
+# shift + cmd - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
+# shift + cmd - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
+# shift + cmd - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
+# shift + cmd - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
+# shift + cmd - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
+# shift + cmd - 6 : chunkc tiling::window --send-to-desktop 6; chunkc tiling::desktop --focus 6
+# shift + cmd - 7 : chunkc tiling::window --send-to-desktop 7; chunkc tiling::desktop --focus 7
+# shift + cmd - 8 : chunkc tiling::window --send-to-desktop 8; chunkc tiling::desktop --focus 8
+# shift + cmd - 9 : chunkc tiling::window --send-to-desktop 9; chunkc tiling::desktop --focus 9
+# shift + cmd - 0 : chunkc tiling::window --send-to-desktop 10; chunkc tiling::desktop --focus 10
 
 # focus monitor
 ctrl + alt - z  : chunkc tiling::monitor -f prev
@@ -272,3 +273,6 @@ ctrl + alt - s : chunkc tiling::desktop --layout monocle
 ctrl + alt - d : chunkc tiling::desktop --layout float
 
 ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
+
+# reload config
+ctrl + alt - r : ~/.chunkwmrc
