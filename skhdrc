@@ -114,7 +114,7 @@ cmd + shift - return : ~/Scripts/qtb.sh
 cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
 # close focused window
-alt - w : chunkc tiling::window --close
+# alt - w : chunkc tiling::window --close
 
 # focus window
 alt - h : chunkc tiling::window --focus west
@@ -276,3 +276,7 @@ ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
 
 # reload config
 ctrl + alt - r : ~/.chunkwmrc
+
+# change split mode
+alt - v: chunkc set bsp_split_mode vertical
+alt - c: chunkc set bsp_split_mode horizontal
