@@ -7,3 +7,4 @@ ln -f tmux.conf $HOME/.tmux.conf
 ln -f alacritty.yml $HOME/.alacritty.yml
 ln -f chunkwmrc $HOME/.chunkwmrc
 ln -f skhdrc $HOME/.skhdrc
+ln -f yabairc $HOME/.yabairc
