@@ -97,8 +97,11 @@ Plug 'scrooloose/nerdtree'
 
 " Fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-"Plug 'BurntSushi/ripgrep'
+"Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
+
+" ctrp-p
+"Plug 'ctrlpvim/ctrlp.vim'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -198,9 +201,10 @@ let g:bufExplorerShowRelativePath=1     " Show relative paths.
 let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 
 " Airline Config
+let g:airline#extensions#branch#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16_colors'
-let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = ''
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t %m'
