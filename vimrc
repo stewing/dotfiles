@@ -103,6 +103,9 @@ Plug 'BurntSushi/ripgrep'
 " ctrp-p
 "Plug 'ctrlpvim/ctrlp.vim'
 
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " tags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
