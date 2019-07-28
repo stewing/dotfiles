@@ -60,6 +60,11 @@ if [ -e /proc/cpuinfo ] ; then
 fi
 DIFF="vimdiff -R"
 
+# Go
+GOPATH=$HOME/go
+
+export GOPATH
+
 # history
 shopt -s histappend
 HISTIGNORE=" *:ll:ll *:[bf]g:exit:history:history *:bc"
@@ -83,7 +88,7 @@ case $- in
                 true
                 ;;
             Darwin)
-                PATH=$PATH:/usr/local/bin/
+                PATH=$PATH:/usr/local/bin/:$HOME/.iterm2
 
                 # homebrew stuff
                 if [ ! -x /usr/local/bin/brew ] ; then
@@ -117,6 +122,8 @@ case $- in
     *)      # non-interactive shell
         ;;
 esac
+
+PATH=$PATH:$GOPATH
 
 export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
