@@ -219,6 +219,12 @@ let g:airline#extensions#tagbar#flags='s'
 " CTags
 set tags+=src/tags,src/TAGS
 
+" Go
+" format with goimports instead of gofmt
+let g:go_fmt_command = "goimports"
+" fmt on save
+let g:go_fmt_autosave = 1
+
 " autocmds for certain files
 autocmd FileType yaml   setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
