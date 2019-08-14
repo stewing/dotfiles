@@ -15,4 +15,4 @@ fi
 
 status="$status   $(pwd)"
 
-printf "%*s" $width "$status"
+printf "%*s" "-$width" "$status"
