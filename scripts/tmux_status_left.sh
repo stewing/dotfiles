@@ -13,6 +13,6 @@ else
     status=$(printf " %s  %s" "-" "-")
 fi
 
-status="$status   $(pwd)"
+status="$status    $(pwd)"
 
 printf "%*s" "-$width" "$status"
