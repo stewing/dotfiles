@@ -13,6 +13,6 @@ else
     status=$(printf " %s  %s" "-" "-")
 fi
 
-status="$status    $(pwd)"
+status="$status    $(dirs +0)"
 
 printf "%*s" "-$width" "$status"

@@ -51,6 +51,8 @@ set t_ut=
 let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#show_call_signatures = "1"
+
 " Defaults
 " let g:jedi#goto_command = "<leader>d"
 " let g:jedi#goto_assignments_command = "<leader>g"
@@ -69,6 +71,7 @@ let g:strip_whitespace_confirm=0
 let g:rainbow_active=1
 let g:vim_search_pulse_duration=200
 hi link illuminatedWord Visual
+let g:Illuminate_delay = 0
 
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -97,11 +100,7 @@ Plug 'scrooloose/nerdtree'
 
 " Fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-Plug 'BurntSushi/ripgrep'
-
-" ctrp-p
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
 
 " go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -110,14 +109,12 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
-" Plug 'inside/vim-search-pulse' " slow
 Plug 'RRethy/vim-illuminate'
 
-"Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim'
-"Plug 'sheerun/vim-polyglot' " slow
 
 call plug#end()
+
 
 " scrolling
 set scrolloff=2
@@ -134,7 +131,6 @@ set matchtime=2
 
 " FZF
 nnoremap \f :FZF<cr>
-nnoremap \t :Tags<cr>
 
 " filetype plugin/syntax
 filetype plugin on
