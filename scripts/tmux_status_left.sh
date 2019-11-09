@@ -7,10 +7,12 @@ repo=$(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null)
 
 status=""
 
+# Insert a random unicode char: Insert Mode -> ctrl-v -> u+<number>
+
 if [ -n "$branch" ] ; then
-    status=$(printf " %s  %s" "$repo" "$branch")
+    status=$(printf " %s  %s" "$repo" "$branch")
 else
-    status=$(printf " %s  %s" "-" "-")
+    status=$(printf " %s  %s" "-" "-")
 fi
 
 status="$status    $(dirs +0)"
