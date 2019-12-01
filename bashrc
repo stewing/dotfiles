@@ -72,6 +72,9 @@ HISTTIMEFORMAT="%Y-%m-%d-%T "
 HISTSIZE=5000
 HISTDIR="$HOME/.history"
 
+# disable idiotic mac os shell warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # P4
 alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}'"
 P4CONFIG=Perforce
