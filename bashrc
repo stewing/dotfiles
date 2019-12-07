@@ -145,6 +145,7 @@ if [ "$rc" -eq 0 ] ; then
 fi
 
 # FZF and settings related to it
+export FZF_DEFAULT_COMMAND='fd --type f'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Remove esc-c, chagne to esc-q
