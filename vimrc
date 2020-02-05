@@ -15,9 +15,12 @@ set lazyredraw
 set hidden
 set timeoutlen=500
 set laststatus=2
+set shortmess+=c
 set showcmd
 set showmode
+set signcolumn=yes
 set t_Co=256
+set updatetime=300
 
 " disable bells
 set noerrorbells
@@ -36,31 +39,6 @@ set directory=/tmp/stewing/vim/swap/
 set backupdir=/tmp/stewing/vim/backup/
 set mouse-=a
 set t_ut=
-
-" ALE
-"let g:ale_completion_enabled = 0
-"let g:airline#extensions#ale#enabled = 1
-"let g:ale_sign_column_always = 1
-"let g:ale_echo_msg_error_str = 'E'
-"let g:ale_echo_msg_warning_str = 'W'
-"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"let g:ale_set_highlights = 0
-
-
-" Jedi-vim
-let g:jedi#auto_initialization = 1
-let g:jedi#auto_vim_configuration = 1
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#show_call_signatures = "1"
-
-" Defaults
-" let g:jedi#goto_command = "<leader>d"
-" let g:jedi#goto_assignments_command = "<leader>g"
-" let g:jedi#goto_definitions_command = ""
-" let g:jedi#documentation_command = "K"
-" let g:jedi#usages_command = "<leader>n"
-" let g:jedi#completions_command = "<C-Space>"
-" let g:jedi#rename_command = "<leader>r"
 
 " better whitespace
 let g:better_whitespace_enabled=1
@@ -105,16 +83,16 @@ Plug 'junegunn/fzf.vim'
 " go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " tags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 Plug 'RRethy/vim-illuminate'
 
-Plug 'davidhalter/jedi-vim'
-
 call plug#end()
-
 
 " scrolling
 set scrolloff=2
@@ -188,11 +166,9 @@ if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 
-" base16 setup
-let base16colorspace=256
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+" CoC setup
+if filereadable(expand("~/.vimrc.coc"))
+    source ~/.vimrc.coc
 endif
 
 " BufExplorer Setup
@@ -222,8 +198,9 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 
 " autocmds for certain files
-autocmd FileType yaml   setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
+autocmd FileType yaml       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType python     setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
 autocmd BufEnter *.yml.template  setlocal filetype=yaml
 
 " System-specific setttings
@@ -235,6 +212,12 @@ if has('unix')
         " tagbar setup
         let g:tagbar_ctags_bin='/usr/bin/ctags'
     endif
+endif
+
+" base16 setup
+if filereadable(expand('~/.vimrc_background'))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 if has('gui_running')
@@ -249,11 +232,6 @@ endif
 if &diff
     set background=dark
     " colorscheme solarized
-endif
-
-if filereadable(expand('~/.vimrc_background'))
-  let base16colorspace=256
-  source ~/.vimrc_background
 endif
 
 " Background

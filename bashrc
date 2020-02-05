@@ -62,7 +62,6 @@ DIFF="vimdiff -R"
 
 # Go
 GOPATH=$HOME/go
-
 export GOPATH
 
 # history
@@ -163,3 +162,10 @@ complete -F _fzf_dir_completion -o default -o bashdefault tree
 # iTerm2 stuff
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+# rbenv
+eval "$(rbenv init -)"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
