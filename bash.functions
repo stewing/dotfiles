@@ -183,6 +183,7 @@ __set_vars()
 {
     GIT_BRANCH=""
     GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+    LAST_OUTPUT_EPOCH_SECONDS=0
     ABBREV_DIRS=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")
 }
 
@@ -219,7 +220,7 @@ __set_it2_tb()
     fi
 }
 
-export ABBREV_DIRS LAST_EXIT_STATUS
+export ABBREV_DIRS LAST_EXIT_STATUS LAST_OUTPUT_EPOCH_SECONDS
 export -f __write_history __set_vars __set_it2_tb
 
 # Kubernetes

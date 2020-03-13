@@ -15,6 +15,6 @@ else
     status=$(printf " %s  %s" "-" "-")
 fi
 
-status="$status    $(dirs +0)"
+status="  #S $status    $(dirs +0)"
 
 printf "%*s" "-$width" "$status"

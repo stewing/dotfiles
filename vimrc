@@ -87,7 +87,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " tags
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 Plug 'RRethy/vim-illuminate'

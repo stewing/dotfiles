@@ -39,6 +39,7 @@ alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
 alias ts="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+alias tsd="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
 
 # weather
 alias weather="curl -s wttr.in/Pittsburgh"
@@ -130,10 +131,7 @@ PATH=$PATH:$GOPATH
 export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # completion
-COMPLETION_FILE=/fs/home/sewing/git/bash-completion/bash_completion
-if [ -x $COMPLETION_FILE ] ; then
-    . $COMPLETION_FILE
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 compgen -G "$HOME/.bashrc.*" > /dev/null
 rc=$?
