@@ -157,9 +157,6 @@ bind '"\C-t": transpose-chars'
 complete -F _fzf_path_completion -o default -o bashdefault ag vim
 complete -F _fzf_dir_completion -o default -o bashdefault tree
 
-# iTerm2 stuff
-# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
 # rbenv
 eval "$(rbenv init -)"
 
