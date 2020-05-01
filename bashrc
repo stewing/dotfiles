@@ -50,7 +50,7 @@ alias addrs="ip -o a | cut -d ' ' -f2,7"
 alias jpp="python -mjson.tool"
 
 # settings
-EDITOR=vim
+EDITOR=nvim
 GIT_EDITOR=$EDITOR
 PS1="\h % "
 PAGER="less"
@@ -59,7 +59,7 @@ MAKEFLAGS="-j 4"
 if [ -e /proc/cpuinfo ] ; then
     MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 fi
-DIFF="vimdiff -R"
+DIFF="nvim -d"
 
 # Go
 GOPATH=$HOME/go
@@ -78,8 +78,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # P4
 alias openlist="p4 opened | sed 's/#.*//' | p4 -x - where | awk '/^\// {print \$3}'"
 P4CONFIG=Perforce
-P4EDITOR=vim
-P4DIFF="vimdiff -R"
+P4EDITOR=nvim
+P4DIFF="nvim -d"
 
 export P4CONFIG P4EDITOR P4DIFF
 
@@ -154,7 +154,7 @@ bind "$(bind -s | grep '^"\\ec"' | sed 's/ec/C-q/')"
 # Fix crap binding for CTRL-T
 bind '"\C-t": transpose-chars'
 
-complete -F _fzf_path_completion -o default -o bashdefault ag vim
+complete -F _fzf_path_completion -o default -o bashdefault ag vim nvim
 complete -F _fzf_dir_completion -o default -o bashdefault tree
 
 # rbenv
@@ -164,3 +164,10 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# git setup
+git config --global user.name "🚀 Steven Ewing 🌌"
+git config --global diff.tool vimdiff3
+git config --global diff.tool.vimdiff3.path nvim
+git config --global merge.tool vimdiff3
+git config --global merge.tool.vimdiff3.path nvim
