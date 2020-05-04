@@ -25,7 +25,7 @@ if [ -n "$branch" ] ; then
     has_diff="  "
     if ! git diff-index --quiet HEAD -- ; then
         has_diff=" 繁"
-    elif [ "$merge_base" != "$local_sha" ] ; then
+    elif [ "$merge_base" != "$lsha" ] ; then
         has_diff="  "
     fi
 
