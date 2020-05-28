@@ -48,6 +48,8 @@ alias weather="curl -s wttr.in/Pittsburgh"
 alias agp='ag --pager "less -R"'
 alias addrs="ip -o a | cut -d ' ' -f2,7"
 alias jpp="python -mjson.tool"
+alias allsrc='fd .*.\(go\|bazel\|py\|rb\|pl\|sh\)'
+alias vim=nvim
 
 # settings
 EDITOR=nvim
@@ -117,7 +119,7 @@ case $- in
             mkdir "$HISTDIR"
         fi
 
-        PROMPT_COMMAND="__write_history; __set_vars; __set_it2_tb"
+        PROMPT_COMMAND="__write_history; __set_vars;"
 
         BASE16_SHELL=$HOME/.config/base16-shell/
         [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -171,3 +173,4 @@ git config --global diff.tool vimdiff3
 git config --global diff.tool.vimdiff3.path nvim
 git config --global merge.tool vimdiff3
 git config --global merge.tool.vimdiff3.path nvim
+# git config --global pull.rebase true

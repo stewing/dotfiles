@@ -167,8 +167,8 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 " CoC setup
-if filereadable(expand("~/.vimrc.coc"))
-    source ~/.vimrc.coc
+if filereadable(expand("~/.config/nvim/coc.vim"))
+    source ~/.config/nvim/coc.vim
 endif
 
 " BufExplorer Setup

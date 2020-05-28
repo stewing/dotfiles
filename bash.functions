@@ -175,7 +175,7 @@ __write_history()
 {
     LAST_EXIT_STATUS=$?
     [ -d "$HISTDIR" ] || mkdir "$HISTDIR"
-    printf "$(hostname -s) $(pwd) $(history 1)\\n" >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log
+    printf "%s %s %q\n" $(hostname -s) $(pwd) $(history 1) >> $HISTDIR/bash_history_$(date "+%Y-%m-%d").log
     ln -sf $HISTDIR/bash_history_$(date "+%Y-%m-%d").log ~/.history/today.log
 }
 

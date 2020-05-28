@@ -13,7 +13,7 @@ set autoindent
 set ruler
 set lazyredraw
 set hidden
-set timeoutlen=500
+" set timeoutlen=500
 set laststatus=2
 set shortmess+=c
 set showcmd
