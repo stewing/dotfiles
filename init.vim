@@ -193,8 +193,12 @@ set tags+=src/tags,src/TAGS
 
 " Go
 " format with goimports instead of gofmt
-let g:go_fmt_command = "goimports"
-" fmt on save
+let g:go_get_update = 0
+let g:go_fmt_command = "gopls"
+let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'gopls'
+let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_enabled = ['typecheck', 'errcheck', 'govet', 'golint', 'gosec']
 let g:go_fmt_autosave = 1
 
 " autocmds for certain files
