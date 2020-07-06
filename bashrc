@@ -10,6 +10,7 @@ shopt -s extglob
 #
 # read our functions
 source ~/.bash.functions
+RCFILE_BASE=~/git/dotfiles
 
 #
 # path utilities
@@ -39,10 +40,10 @@ alias hr="perl -e 'my \$inp = shift; my (\$s, \$v); \$v = 1; \$inp=~s/,//g; if (
 alias gmtime="perl -e '\print scalar(gmtime(shift())), \"\n\";'"
 alias grep="grep --color"
 alias ts="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
-alias tsd="gawk '{ print strftime(\"%Y-%m-%d %H:%M:%S\"), \$0; fflush(); }'"
+alias rts="perl -wp $RCFILE_BASE/scripts/relative_timestamp.pl"
 
 # weather
-alias weather="curl -s wttr.in/Pittsburgh"
+alias weather="curl -s wttr.in/Oakland"
 
 # Misc stuff
 alias agp='ag --pager "less -R"'
