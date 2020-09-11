@@ -4,6 +4,8 @@
 ln -f bashrc $HOME/.bashrc
 ln -f bash.functions $HOME/.bash.functions
 
+ln -f zshrc $HOME/.zshrc
+
 ln -f vimrc  $HOME/.vimrc
 mkdir -p $HOME/.config/nvim
 ln -f init.vim $HOME/.config/nvim/init.vim
