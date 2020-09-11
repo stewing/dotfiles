@@ -5,22 +5,22 @@ scriptencoding=utf-8
 "
 
 " general
-set nocompatible
-set shell=/bin/bash
-set background=dark
-set history=700
-set autoread
 set autoindent
-set ruler
-set lazyredraw
+set autoread
+set background=dark
 set hidden
-set timeoutlen=500
+set history=700
 set laststatus=2
+set lazyredraw
+set nocompatible
+set ruler
+set shell=/bin/bash
 set shortmess+=c
 set showcmd
 set showmode
 set signcolumn=yes
 set t_Co=256
+set timeoutlen=500
 set updatetime=300
 
 " disable bells
@@ -166,12 +166,23 @@ if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 
+"
+" vim-go
+"
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
+"
 " CoC setup
+"
 if filereadable(expand("~/.config/nvim/coc.vim"))
     source ~/.config/nvim/coc.vim
 endif
 
+"
 " BufExplorer Setup
+"
 let g:bufExplorerShowRelativePath=1     " Show relative paths.
 let g:bufExplorerSortBy='fullpath'      " Sort by full file path name.
 

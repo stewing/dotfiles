@@ -175,3 +175,6 @@ git config --global diff.tool.vimdiff3.path nvim
 git config --global merge.tool vimdiff3
 git config --global merge.tool.vimdiff3.path nvim
 # git config --global pull.rebase true
+
+# pyenv
+eval "$(pyenv init -)"
