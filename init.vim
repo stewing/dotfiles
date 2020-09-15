@@ -70,7 +70,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ntpeters/vim-better-whitespace'
 
 " color
-Plug 'danielwe/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 

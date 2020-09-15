@@ -1,4 +1,7 @@
 
+# start profiling
+#zmodload zsh/zprof
+
 # Path to oh-my-zsh installation.
 export ZSH="/Users/stevenewing/.oh-my-zsh"
 
@@ -52,7 +55,6 @@ DISABLE_FZF_AUTO_COMPLETION=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     fzf
-    bazel
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -183,19 +185,18 @@ PATH=$PATH:$GOPATH
 export PAGER HISTSIZE HISTIGNORE HISTTIMEFORMAT FIGNORE PS1 EDITOR GIT_EDITOR PROMPT_COMMAND MAKEFLAGS
 
 # completion
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-# Remove esc-c, chagne to esc-q
-# bind "$(bind -s | grep '^"\\ec"' | sed 's/ec/C-q/')"
-# [[ $- =~ i ]] && bind '"\ec": nop'
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Fix crap binding for CTRL-T
 bindkey '^t'  gosmacs-transpose-chars
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# way too slow to leave on when not needed
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # git setup
 git config --global user.name "🚀 Steven Ewing 🌌"
@@ -218,3 +219,7 @@ if [ "$rc" -eq 0 ] ; then
         source "$rc"
     done
 fi
+
+# zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
