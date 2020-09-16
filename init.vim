@@ -78,7 +78,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
 " Fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " go
@@ -106,9 +106,6 @@ set incsearch
 set showmatch
 set hlsearch
 set matchtime=2
-
-" FZF
-nnoremap \f :FZF<cr>
 
 " filetype plugin/syntax
 filetype plugin on
@@ -253,4 +250,7 @@ endif
 set background=dark
 hi NonText ctermbg=none
 hi Normal guibg=NONE ctermbg=NONE
+
+" FZF
+nnoremap \f :FZF<cr>
 
