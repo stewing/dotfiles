@@ -16,6 +16,8 @@ if [ -n "$remote_branch" ]; then
     merge_base=$(git merge-base $branch $remote_branch)
 fi
 
+uptime=$(uptime| awk '{print $NF-2}')
+
 # Status string
 status=""
 
@@ -37,6 +39,6 @@ if [ -n "$branch" ] ; then
     status=" $(printf " %s  %s [%s%s ]" "$repo" "$branch" "$has_diff" "$has_untracked")   "
 fi
 
-status="  #S $status   $(dirs +0)"
+status="   #S  $(printf "  %3.02f " $uptime)$status   $(dirs +0)"
 
 printf "%*s" "-$width" "$status"

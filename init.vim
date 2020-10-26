@@ -68,6 +68,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'RRethy/vim-illuminate'
 
 " color
 Plug 'chriskempson/base16-vim'
@@ -85,12 +86,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " CoC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " tags
 Plug 'majutsushi/tagbar'
 
-Plug 'RRethy/vim-illuminate'
+" bazel
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
 call plug#end()
 
@@ -124,6 +127,10 @@ if has('nvim')
 else
     set viminfo='100,n$HOME/.vim/files/info/viminfo
 endif
+
+" git fugutive mappings
+nnoremap \b :Git blame<cr>
+
 
 " spacing
 set expandtab
@@ -168,7 +175,7 @@ endif
 "
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
+" let g:go_def_mapping_enabled = 0
 
 "
 " CoC setup
