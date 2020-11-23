@@ -248,10 +248,12 @@ else
     " colorscheme base16-grayscale-dark
 endif
 
+" diff setup
 if &diff
     set background=dark
     " colorscheme solarized
 endif
+set diffopt+=vertical
 
 " Background
 set background=dark
