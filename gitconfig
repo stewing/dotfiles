@@ -1,0 +1,33 @@
+
+[user]
+	name = 🚀 Steven Ewing 🌌
+
+; Atom mergetool
+[mergetool "atom"]
+    cmd = atom -w $MERGED
+    trustExitCode = false
+[merge]
+	tool = vimdiff3
+    conflictstyle = diff3
+[mergetool]
+    prompt = false
+    keepbackup = false
+
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[diff]
+	tool = vimdiff3
+
+;[diff "tool.vimdiff3"]
+;    path = nvim
+;[merge "tool.vimdiff3"]
+;    path = nvim
+[pull]
+	rebase = false
+[diff "tool.vimdiff3"]
+	path = nvim
+[merge "tool.vimdiff3"]
+	path = nvim
+[pager]
+	branch = false
