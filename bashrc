@@ -178,3 +178,4 @@ git config --global merge.tool.vimdiff3.path nvim
 
 # pyenv
 eval "$(pyenv init -)"
+source "$HOME/.cargo/env"

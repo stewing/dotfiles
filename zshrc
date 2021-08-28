@@ -1,9 +1,9 @@
 
 # start profiling
-#zmodload zsh/zprof
+zmodload zsh/zprof
 
 # Path to oh-my-zsh installation.
-export ZSH="/Users/stevenewing/.oh-my-zsh"
+export ZSH="/Users/stewing/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -55,6 +55,8 @@ DISABLE_FZF_AUTO_COMPLETION=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     fzf
+    docker
+    docker-compose
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,7 +124,8 @@ DIFF="nvim -d"
 
 # Go
 GOPATH=$HOME/go
-export GOPATH
+GO111MODULE=on
+export GOPATH GO111MODULE
 
 # history
 # XXX: shopt -s histappend
@@ -194,9 +197,9 @@ bindkey '^t'  gosmacs-transpose-chars
 
 # NVM
 # way too slow to leave on when not needed
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # git setup
 git config --global user.name "🚀 Steven Ewing 🌌"
@@ -212,14 +215,16 @@ eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 
 # other rc files
-compgen -G "$HOME/.zshrc.*" > /dev/null
-rc=$?
-if [ "$rc" -eq 0 ] ; then
-    for rc in $HOME/.zshrc.* ; do
-        source "$rc"
-    done
-fi
+#bashcompinit
+#compgen -G "$HOME/.zshrc.*" > /dev/null
+#rc=$?
+#if [ "$rc" -eq 0 ] ; then
+#    for rc in $HOME/.zshrc.* ; do
+#        source "$rc"
+#    done
+#fi
 
 # zprof
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
