@@ -27,7 +27,7 @@ status=""
 if [ -n "$branch" ] ; then
     has_diff="  "
     if ! git diff-index --quiet HEAD -- ; then
-        has_diff=" 繁"
+        has_diff=" 󰕚"
     elif [ "$merge_base" != "$lsha" ] ; then
         has_diff="  "
     fi
@@ -37,9 +37,9 @@ if [ -n "$branch" ] ; then
         has_untracked=" "
     fi
 
-    status=" $(printf " %s  %s [%s%s ]" "$repo" "$branch" "$has_diff" "$has_untracked")   "
+    status=" $(printf " %s  %s [%s%s ]" "$repo" "$branch" "$has_diff" "$has_untracked") 󰇙 "
 fi
 
-status="   #S  $cpu $status   $(dirs +0)"
+status="   #S 󰇙 $cpu 󰇙 $status   $(dirs +0)"
 
 printf "%*s" "-$width" "$status"
